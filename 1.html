@@ -20,13 +20,102 @@
 var userName = 'Lee';</code></pre>
             </div>
         </div>
-        <p>변수는 연산된 결과값을 재사용할 수 있도록 저장된 메모리 공간에 상징적인 이름을 붙인 것이다.
+        <p>변수는 연산된 <u>결과값을 재사용</u> 할 수 있도록 저장된 메모리 공간에 상징적인 이름을 붙인 것이다.
             <br><em> *변수명은 <code>식별자</code>라고도 불린다.</em>
         </p>
 
-        <hr>
+        <h3>값</h3>
+        <p>프로그램에 의해 조작될 수 있는 대상.</p>
+        <div class="language-javascript highlighter-rouge">
+            <div class="highlight">
+                <pre><code>var str = 'Hello world';</code></pre>
+            </div>
+        </div>
+        <p>위 예제에서 <code>str</code> = <mark>변수</mark>, <code>Hello World</code>는 <em>문자열 리터럴</em>의 <mark>값</mark> 을 의미한다.</p>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>용어</th>
+                    <th>의미</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>데이터 타입(Data Type)</td>
+                    <td>프로그래밍 언어에서 사용할 수 있는 값의 종류
+                        <br>(Number, String, Boolean, null, undefined, Symbol)
+                    </td>
+                </tr>
+                <tr>
+                    <td>변수(variable)</td>
+                    <td>값이 저장된 메모리 공간의 주소를 가리키는 식별자(indentifier)</td>
+                </tr>
+                <tr>
+                    <td>리터럴(literal)</td>
+                    <td>소스코드 안에서 직접 만들어 낸 상수 값 자체를 말하며, <br>값을 구성하는 최소 단위</td>
+                </tr>
+            </tbody>
+        </table>
+        <details>
+            <summary>데이터타입 종류</summary>
+            <div>
+                <strong>원시타입 <mark>primitive data type</mark></strong>
+                <ul>
+                    <li>number</li>
+                    <li>string</li>
+                    <li>boolean</li>
+                    <li>null</li>
+                    <li>undefined</li>
+                    <li>symbol (New in ECMAScript 6)</li>
+                </ul>
+                <strong>객체타입 <mark>object data type</mark></strong>
+                <ul>
+                    <li>Object
+                        <ul>
+                            <li>Array</li>
+                            <li>Function</li>
+                            <li>Regex(Regular Expression)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </details>
+        <details>
+            <summary>리터럴 종류</summary>
+            <div>
+                        <pre style="border:0;"><code>// 숫자 리터럴</code>
+10.50
+1001
 
-        <h2>변수는 어디에 저장되는가?</h2>
+<code>// 문자열 리터럴</code>
+'Hello'
+"World"
+
+<code>// 불리언 리터럴</code>
+true
+false
+
+<code>// null 리터럴</code>
+null
+
+<code>// undefined 리터럴</code>
+undefined
+
+<code>// 객체 리터럴</code>
+{ name: 'Lee', gender: 'male' }
+
+<code>// 배열 리터럴</code>
+[ 1, 2, 3 ]
+
+<code>// 정규표현식 리터럴</code>
+/ab+c/
+
+<code>// 함수 리터럴</code>
+function() {}</pre>
+            </div>
+        </details>
+    
+        <h3>변수는 어디에 저장되는가?</h3>
         <p>변수는 자바스크립트 엔진내 관리영역인<mark>실행 컨텍스트</em></mark>에 저장되며, <br>실행 컨텍스트 내에 <code>키(key)</code> / <code>값(value)</code> 형식인 객체로 등록되어 관리된다. </p>
 
         <hr>
@@ -44,7 +133,7 @@ var userName = 'Lee';</code></pre>
 var score;</code></pre>
             </div>
         </div>
-        <hr>
+
         <div class="language-javascript highlighter-rouge">
             <div class="highlight">
                 <pre><code>console.log( score ); // undefined
@@ -54,14 +143,35 @@ console.log( score ); // ?? </code></pre>
             </div>
         </div>
         <details>
-            <summary>결과보기</summary>
-            <p><pre><code>console.log( score ); // undefined
+            <summary><kbd>결과보기</kbd></summary>
+            <div><pre><code>console.log( score ); // undefined
 score = 9;
 var score;
-console.log( score ); // 9</code></pre></p>
+console.log( score ); // 9</code></pre></div>
         </details>
     </section>
 </main>
+
+<details open>
+    <summary>목차</summary>
+    <ul>
+        <li><a href="./index.html">HOME</a></li>
+        <li><a href="./1.html">변수</a></li>
+    </ul>
+</details>
+<details open>
+    <summary>참조</summary>
+    <ul>
+        <li><a href="https://ko.javascript.info/first-steps" target="_blank">JAVSCRIPT.INFO</a></li>
+        <li><a href="https://poiemaweb.com/coding" target="_blank">모던 자바스크립트 Deep Dive</a></li>
+    </ul>
+</details>
+
+<footer>
+    <p>The Javascript course was created by <a href="https://satang1245.github.io/js/" target="_blank">satang1245</a>, an MIT licensee.</p>
+    <p><small>&copy; 2023 satang1245</small></p>
+</footer>
+
 <!-- [CDN] Code Highlights -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/css.min.js"></script>
