@@ -24,6 +24,12 @@ var userName = 'Lee';</code></pre>
             <br><em> *변수명은 <code>식별자</code>라고도 불린다.</em>
         </p>
 
+        <h3>변수는 어디에 저장되는가?</h3>
+        <p>변수는 자바스크립트 엔진내 관리영역인<mark>실행 컨텍스트</em></mark>에 저장되며, <br>실행 컨텍스트 내에 <code>키(key)</code> / <code>값(value)</code> 형식인 객체로 등록되어 관리된다. </p>
+
+        <hr>
+
+
         <h3>값</h3>
         <p>프로그램에 의해 조작될 수 있는 대상.</p>
         <div class="language-javascript highlighter-rouge">
@@ -83,7 +89,7 @@ var userName = 'Lee';</code></pre>
         <details>
             <summary>리터럴 종류</summary>
             <div>
-                        <pre style="border:0;"><code>// 숫자 리터럴</code>
+                <pre><code class="language-javascript">// 숫자 리터럴</code>
 10.50
 1001
 
@@ -114,29 +120,88 @@ undefined
 function() {}</pre>
             </div>
         </details>
-    
-        <h3>변수는 어디에 저장되는가?</h3>
-        <p>변수는 자바스크립트 엔진내 관리영역인<mark>실행 컨텍스트</em></mark>에 저장되며, <br>실행 컨텍스트 내에 <code>키(key)</code> / <code>값(value)</code> 형식인 객체로 등록되어 관리된다. </p>
-
+        
         <hr>
 
-        <h2>호이스팅? 🤔</h2>
+        <h3>문</h3>
+        <p>문이란, 컴퓨터에 의해 프로그램인 스크립트가 단계별로 실행되는 명령들의 집합을 의미하며,
+            <br>리터럴, 연산자, 표현식, 키워드 등으로 구성되고 세미콜론(;)으로 끝나야 한다.</p>
+            <p>문은 블럭으로 그룹화 할 수 있다. (추후 스코프와 관련있기 때문에 알아둬야 함)</p>
+            <div class="language-javascript highlighter-rouge">
+                <div class="highlight">
+                    <pre><code class="language-javascript">// 함수
+function myFunc(x,y) {
+    return x + y;
+}
+
+// if 문
+if (x > 50) {
+    // do something..
+}
+
+// for 문
+for (var i=0; i<10; i+=1) {
+    // do something..
+}</code></pre>
+                </div>
+            </div>
+
+            <details>
+                <summary><kbd>유효범위 맛보기</kbd></summary>
+                <div>
+                    <pre><code>// 다음의 결과값을 예측해보자.
+if (1 < 10 ) {
+    let a = 'a';
+} else if ( 1 < -1) {
+    let a = 'b';
+}
+console.log(a); // ??
+
+if (1 < 10 ) {
+    a = 'a';
+} else if ( 1 < -1) {
+    a = 'b';
+}
+let a;
+console.log(a); // ??
+
+if (1 < 10 ) {
+    a = 'a';
+} else if ( 1 < -1) {
+    a = 'b';
+}
+var a;
+console.log(a); // ??
+
+let a;
+if (1 < 10 ) {
+    a = 'a';
+} else if ( 1 < -1) {
+    a = 'b';
+}
+console.log(a); // ??
+                    </code></pre>
+                </div>
+            </details>
+        <hr>
+
+        <h3>호이스팅? 🤔</h3>
         <p>자바스크립트의 특징</p>
         <div class="language-javascript highlighter-rouge">
             <div class="highlight">
-                <pre><code>console.log(score); // Uncaught ReferenceError: score is not defined</code></pre>
+                <pre><code class="language-javascript">console.log(score); // Uncaught ReferenceError: score is not defined</code></pre>
             </div>
         </div>
         <div class="language-javascript highlighter-rouge">
             <div class="highlight">
-                <pre><code>console.log(score); // undefined
+                <pre><code class="language-javascript">console.log(score); // undefined
 var score;</code></pre>
             </div>
         </div>
 
         <div class="language-javascript highlighter-rouge">
             <div class="highlight">
-                <pre><code>console.log( score ); // undefined
+                <pre><code class="language-javascript">console.log( score ); // undefined
 score = 9;
 var score;
 console.log( score ); // ?? </code></pre>
@@ -144,12 +209,14 @@ console.log( score ); // ?? </code></pre>
         </div>
         <details>
             <summary><kbd>결과보기</kbd></summary>
-            <div><pre><code>console.log( score ); // undefined
+            <div>
+                <pre><code class="language-javascript">console.log( score ); // undefined
 score = 9;
 var score;
 console.log( score ); // 9</code></pre></div>
         </details>
     </section>
+
 </main>
 
 <details open>
@@ -157,6 +224,7 @@ console.log( score ); // 9</code></pre></div>
     <ul>
         <li><a href="./index.html">HOME</a></li>
         <li><a href="./1.html">변수</a></li>
+        <li><a href="./2.html">데이터 타입</a></li>
     </ul>
 </details>
 <details open>
