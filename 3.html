@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3. 연산자</title>
+<link rel="stylesheet" href="./css/simple.min.css">
+</head>
+<body>
+<header>
+    <h1>식 및 연산자</h1>
+    <p></p>
+</header>
+<main>
+    <section>
+
+    </section>
+</main>
+
+<details open>
+    <summary>목차</summary>
+    <ul>
+        <li><a href="./index.html">HOME</a></li>
+        <li><a href="./1.html">변수</a></li>
+        <li><a href="./2.html">데이터 타입</a></li>
+        <li><a href="./3.html">연산자</a></li>
+    </ul>
+</details>
+<details open>
+    <summary>참조</summary>
+    <ul>
+        <li><a href="https://ko.javascript.info/first-steps" target="_blank">JAVSCRIPT.INFO</a></li>
+        <li><a href="https://poiemaweb.com/coding" target="_blank">모던 자바스크립트 Deep Dive</a></li>
+        <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators" target="_blank">mdm web docs</a></li>
+    </ul>
+</details>
+
+<footer>
+    <p>The Javascript course was created by <a href="https://satang1245.github.io/js/" target="_blank">satang1245</a>, an MIT licensee.</p>
+    <p><small>&copy; 2023 satang1245</small></p>
+</footer>
+
+<!-- [CDN] Code Highlights -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/javascript.min.js"></script>
+<script>hljs.highlightAll({language: 'javascript'});</script>
+<script>
+const $toggleBtns = document.querySelectorAll('.btn-toggle');
+Array.from($toggleBtns).forEach($toggleBtn=> {
+    $toggleBtn.addEventListener('click', function() {
+        const $content = this.parentNode.nextElementSibling;
+        $content.classList.toggle('open');
+        return false;
+    }, false);
+});
+</script>
+</body>
+</html>

@@ -26,24 +26,24 @@
                 <p>모든 숫자는 표기법만 다를 뿐 모두 정수가 아닌 실수로 표기한다.</p>
             
             <pre><code class="language-javascript">var integer = 10;        // 정수
-    var double = 10.12;      // 실수
-    var negative = -20;      // 음의 정수
-    var binary = 0b01000001; // 2진수
-    var octal = 0o101;       // 8진수
-    var hex = 0x41;          // 16진수</code></pre>
-        <pre><code class="language-javascript">console.log(binary); // 65
-    console.log(octal);  // 65
-    console.log(hex);    // 65
+var double = 10.12;      // 실수
+var negative = -20;      // 음의 정수
+var binary = 0b01000001; // 2진수
+var octal = 0o101;       // 8진수
+var hex = 0x41;          // 16진수</code></pre>
+    <pre><code class="language-javascript">console.log(binary); // 65
+console.log(octal);  // 65
+console.log(hex);    // 65
 
-    // 표기법만 다를뿐 같은 값이다.
-    console.log(binary === octal); // true
-    console.log(octal === hex);    // true
+// 표기법만 다를뿐 같은 값이다.
+console.log(binary === octal); // true
+console.log(octal === hex);    // true
 
-    // 정수로 표시되지만 실제 처리는 실수로 처리한다.
-    console.log(1 === 1.0); // true
+// 정수로 표시되지만 실제 처리는 실수로 처리한다.
+console.log(1 === 1.0); // true
 
-    var result = 4 / 2;
-    console.log(result); // 2</code></pre>
+var result = 4 / 2;
+console.log(result); // 2</code></pre>
 
             <p>Number 타입의 예외의 값들.</p>
             <ul>
@@ -52,62 +52,100 @@
                 <li><mark>NaN</mark>: 산술 연산 불가(not-a-number)</li>
             </ul>
             <pre><code class="language-javascript">var pInf = 10 / 0;  // 양의 무한대
-    console.log(pInf);  // Infinity
+console.log(pInf);  // Infinity
 
-    var nInf = 10 / -0; // 음의 무한대
-    console.log(nInf);  // -Infinity
+var nInf = 10 / -0; // 음의 무한대
+console.log(nInf);  // -Infinity
 
-    var nan = 1 * 'string'; // 산술 연산 불가
-    console.log(nan);       // NaN</code></pre>
+var nan = 1 * 'string'; // 산술 연산 불가
+console.log(nan);       // NaN</code></pre>
                 </div>
-            </article>
-        </section>
+        </article>
 
-
-        <section>
-            <article>
-                <h3>상수(constant) ??? 😳</h3>
-                <p>변수 - 값의 재할당이 가능한 것을 말하며, 상수는 값의 재할당이 불가능한 것을 말한다.
-                    <br><small>*단, const 키워드로 선언된 변수가 객체 인 경우, 값을 변경 할 수 있다.</small>
-                    <br><code>const 키워드는 재할당을 금지할 뿐 "불편"을 의미하지 않는다.</code>
+        <article>
+            <h3><a href="#" class="btn-toggle"># String</a></h3>
+            <div class="detail">
+                <p>문자열(String) 타입은 텍스트 데이터를 나타내는데 사용하며, <br>작은 따옴표(') 또는 큰 따옴표(") 안에 텍스트를 넣어 생성한다.
+                    <br><small>*가장 일반적인 표기법은 <mark>작은 따옴표</mark>를 사용하는 것이다.</small>
                 </p>
-            </article>
-        </section>
+                <p></p>
+                <pre><code class="language-javascript">var str = 'Hello';
 
-        <section>
-            <article>
-                <h3>네이밍</h3>
-                <p>좋은 코드란? <br><small>*주석을 단 설명이 없어도 변수 이름을 통하여 존재 목적을 쉽게 이해할 수 있는 소스.</small></p>
-                <pre><code class="language-javascript">// 😨 Bed
-    var x = 'satang1245'; // x는 아이디를 의미한다.
-    var y = '1987.12.25'; // y는 생년월일을 의미한다.
+// 문자열은 유사배열이다.
+for (var i = 0; i < str.length; i++) {
+    console.log(str[i]);
+}
 
-    // 😄 Good
-    var userId = 'satang1245';
-    var birthday = '1998.12.25';</code></pre>
+// 문자열을 변경할 수 없다.
+str[0] = 'S';
+console.log(str); // string
 
-                <p><strong>식별자 네이밍 규칙</strong></p>
-                <ul>
-                    <li><small>특수문자를 제외한 <mark>문자</mark>, <mark>숫자</mark>, <mark>언더스코어(_)</mark>, <mark>달러 기호($)</mark>를 포함할 수 있다.
-                        <br>단, 예약어를 사용할 수 없으며, 숫자로 시작할 수 없다.</small></li>
-                    <li><small>ES5부터 식별자를 만들 때, 유니코드 문자를 허용함으로 한글이나 일본어 식별자도 사용이 가능해졌지만, 권장하진 않는다.</small></li>
-                    <li><small>일관성을 유지한다면 어떠한 네이밍 컨벤션을 사용해도 좋지만, 가독성을 높이기 위하여 ECMAScript사양에 정의되어 있는 네이밍 컨벤션을 따르는 것이 유리하다.</small></li>
-                </ul>
-                <p><strong>네이밍 컨벤션</strong></p>
-                <pre><code class="language-javascript">// 카멜 케이스(camelCase) - 중간에 대문자가 낙타의 등과 비슷하다고 하여 지어졌다.
-    var firstName;
-
-    // 스네이크 케이스 - 언더바(_)가 뱀처럼 생겼다고 하여 지어졌다.
-    var first_name;
-
-    // 파스칼 케이스 - 첫 글자와 중간 글자들이 대문자인 경우, 프로그램 언어인 파스칼 언어의 표기법과 유사하다고 하여 파스칼 케이스라고 한다.
-    var FirstName;
-
-    // 헝가리언 케이스 (typeHungarianCase) - 이 표기법 개발자가 헝가리 사람이라 이렇게 지어졌다고 한다.
-    var objFullName; // type + identifier;
-    var $elem = document.querySelector('myId'); // DOM 노드
+// 변수 재할당 가능
+str += ' World';
                 </code></pre>
-                <p><small>*변수나 함수의 이름에는 카멜케이스, 생성자 함수 또는 클래스 이름에는 파스칼 케이스를 사용한다.</small></p>
+            </div>
+        </article>
+
+        <article>
+            <h3><a href="#" class="btn-toggle"># Boolean</a></h3>
+            <div class="detail">
+                <p>논리 타입으로 참(<mark>true</mark>) 또는 거짓(<mark>false</mark>)만 표현 가능하다.
+                    <br>*해당 타입은 조건(if)문에서 자주 사용된다.
+                    <br>*조건문에서는 <mark>null</mark>, <mark>undefined</mark>, 숫자(<mark>0</mark>)은 모두 <code>false</code>로 간주한다.
+                    <br><small>해당 관련글은 암묵적 타입변환에서 알아보자.</small>
+                </p>
+                <small><a href="https://poiemaweb.com/js-type-coercion" target="_blank">암묵적 타입변환에 대해 알아보기</a></small>
+                <pre><code class="language-javascript">
+                </code></pre>
+            </div>
+        </article>
+    </section>
+
+
+    <section>
+        <article>
+            <h3>상수(constant) ??? 😳</h3>
+            <p>변수 - 값의 재할당이 가능한 것을 말하며, 상수는 값의 재할당이 불가능한 것을 말한다.
+                <br><small>*단, const 키워드로 선언된 변수가 객체 인 경우, 값을 변경 할 수 있다.</small>
+                <br><code>const 키워드는 재할당을 금지할 뿐 "불편"을 의미하지 않는다.</code>
+            </p>
+        </article>
+    </section>
+
+    <section>
+        <article>
+            <h3>네이밍</h3>
+            <p>좋은 코드란? <br><small>*주석을 단 설명이 없어도 변수 이름을 통하여 존재 목적을 쉽게 이해할 수 있는 소스.</small></p>
+            <pre><code class="language-javascript">// 😨 Bed
+var x = 'satang1245'; // x는 아이디를 의미한다.
+var y = '1987.12.25'; // y는 생년월일을 의미한다.
+
+// 😄 Good
+var userId = 'satang1245';
+var birthday = '1998.12.25';</code></pre>
+
+            <p><strong>식별자 네이밍 규칙</strong></p>
+            <ul>
+                <li><small>특수문자를 제외한 <mark>문자</mark>, <mark>숫자</mark>, <mark>언더스코어(_)</mark>, <mark>달러 기호($)</mark>를 포함할 수 있다.
+                    <br>단, 예약어를 사용할 수 없으며, 숫자로 시작할 수 없다.</small></li>
+                <li><small>ES5부터 식별자를 만들 때, 유니코드 문자를 허용함으로 한글이나 일본어 식별자도 사용이 가능해졌지만, 권장하진 않는다.</small></li>
+                <li><small>일관성을 유지한다면 어떠한 네이밍 컨벤션을 사용해도 좋지만, 가독성을 높이기 위하여 ECMAScript사양에 정의되어 있는 네이밍 컨벤션을 따르는 것이 유리하다.</small></li>
+            </ul>
+            <p><strong>네이밍 컨벤션</strong></p>
+            <pre><code class="language-javascript">// 카멜 케이스(camelCase) - 중간에 대문자가 낙타의 등과 비슷하다고 하여 지어졌다.
+var firstName;
+
+// 스네이크 케이스 - 언더바(_)가 뱀처럼 생겼다고 하여 지어졌다.
+var first_name;
+
+// 파스칼 케이스 - 첫 글자와 중간 글자들이 대문자인 경우, 프로그램 언어인 파스칼 언어의 표기법과 유사하다고 하여 파스칼 케이스라고 한다.
+var FirstName;
+
+// 헝가리언 케이스 (typeHungarianCase) - 이 표기법 개발자가 헝가리 사람이라 이렇게 지어졌다고 한다.
+var objFullName; // type + identifier;
+var $elem = document.querySelector('myId'); // DOM 노드
+            </code></pre>
+            <p><small>*변수나 함수의 이름에는 카멜케이스, 생성자 함수 또는 클래스 이름에는 파스칼 케이스를 사용한다.</small></p>
         </article>
     </section>
 </main>
@@ -118,6 +156,7 @@
         <li><a href="./index.html">HOME</a></li>
         <li><a href="./1.html">변수</a></li>
         <li><a href="./2.html">데이터 타입</a></li>
+        <li><a href="./3.html">연산자</a></li>
     </ul>
 </details>
 <details open>
