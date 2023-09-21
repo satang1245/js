@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Javascript</title>
+<link rel="stylesheet" href="./css/simple.min.css">
+<body>
+<header>
+    <h1>Javascript</h1>
+    <p>브라우저에 출력된 정적인 HTML을 동적으로 표현하기 위해 제작된 경량의 프로그램 언어</p>
+</header>
+<main>
+    <section>
+        <h2>역사</h2>
+        <p>HTML이 한번 화면에 출력된 후에는 그 형태나 동작방법을 바꿀 수 없는 문제를 해결하기 위해서 <br>`넷스케이프 커뮤니케이션즈`에서 만들어졌다. 이후에 이 언어는 마이크로소프트의 인터넷 익스플로러에 <mark>jscript</mark>라는 이름으로 탑재된다. 후에 <mark>ECMA</mark>라는 표준화 기구로 이 언어의 관리 주체가 옮겨졌다.</p>
+
+        <h3>왜 자바스크립트인가?</h3>
+        <p>처음 자바스크립트가 만들어졌을 때는 'LiveScript’라는 이름으로 불렸습니다. 그런데, 당시 자바의 인기가 아주 높은 상황이었습니다. 관련인들은 자바스크립트를 자바의 ‘동생’ 격인 언어로 홍보하면 도움이 될 것이라는 의사결정을 내리고 이름을 바꿨습니다.
+            <br>이름은 자바에서 차용해 왔지만, 자바스크립트는 자바와는 독자적인 언어입니다. 꾸준히 발전을 거듭하면서 ECMAScript라는 고유한 명세를 갖춘 독립적인 언어가 되었죠. 자바스크립트는 자바와 아무런 연관이 없습니다.
+        </p>
+    </section>
+    <section>
+        <h2>ECMAScript</h2>
+        <p>ECMAScript는 표준화 기구인 Ecma International에 의해서 관리되는 자바스크립트 표준안이다. 현재의 자바스크립트는 ECMAScript 3 기반으로 만들어졌고, 현재 시점(2013년)에서는 ECMAScript 5가 표준으로 정의 되었고 이 버전의 자바스크립트를 브라우저 벤더들이 자신들의 브라우저에 구현하는 작업이 한창이다. 곧 ECMAScript 5의 새로운 기능들을 웹에서도 문제 없이 사용할 수 있게 될 것이다. ECMAScript 4는 기존의 자바스크립트와 너무 큰 차이점 때문에 표준으로 채택되지 못했다.</p>
+    </section>
+
+    <section>
+        <h2>JavaScript와 ECMAScript</h2>
+        <p>ECMAScript는 자바스크립트의 표준 명세인 ECMA-262를 말하며 프로그래밍 언어의 타입, 값, 객체와 프로퍼티, 함수, 빌트인 객체 등 핵심 문법(core syntax)을 규정한다. 각 브라우저 제조사는 ECMAScript를 준수하여 브라우저에 내장되는 자바스크립트 엔진을 구현한다.
+            <br><br>자바스크립트는 일반적으로 프로그래밍 언어로서 기본 뼈대를 이루는 ECMAScript와 브라우저가 별도 지원하는 클라이언트 사이드 Web API, 즉 DOM, BOM, Canvas, XMLHttpRequest, Fetch, requestAnimationFrame, SVG, Web Storage, Web Component, Web worker 등을 아우르는 개념이다.
+            <br><br>클라이언트 사이드 Web API는 ECMAScript와는 별도로 World Wide Web Consortium (W3C)에서 별도의 명세로 관리하고 있다. 클라이언트 사이드 Web API의 자세한 내용은 MDN web docs: Web API를 참고하기 바란다.
+        </p>
+    </section>
+
+    <section>
+        <h2>ECMAScript 버전별 특징</h2>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>버전</th>
+                    <th>출시 연도</th>
+                    <th>특징</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>ES1</th>
+                    <td>1997</td>
+                    <td>초판</td>
+                </tr>
+                <tr>
+                    <th>ES2</th>
+                    <td>1998</td>
+                    <td>ISO/IEC 16262 국제 표준과 동일한 규격을 적용</td>
+                </tr>
+                <tr>
+                    <th>ES3</th>
+                    <td>1999</td>
+                    <td>정규 표현식, try ... catch</td>
+                </tr>
+                <tr>
+                    <th>ES5</th>
+                    <td>2009</td>
+                    <td>
+                        HTML5와 함께 출현한 표준안.
+                        <br>JSON, strict mode, 접근자 프로퍼티, 프로퍼티 어트리뷰티 제어, 
+                        <br>향상된 배열 조작 기능(forEach, map, reduce, some, every)
+                    </td>
+                </tr>
+                <tr>
+                    <th>ES6<br>(ECMAScript 2015)</th>
+                    <td>2015</td>
+                    <td>let, const, class, 화살표 함수, 템플릿 리터럴, 디스트럭처링 할당, spread 문법, rest 파라미터, Symbol, Promise, Map/Set, iterator/generator, module import/export</td>
+                </tr>
+                <tr>
+                    <th>ES7<br>(ECMAScript 2016)</th>
+                    <td>2016</td>
+                    <td>지수(**) 연산자, Array.prototype.includes, String.prototype.includes</td>
+                </tr>
+                <tr>
+                    <th>ES8<br>(ECMAScript 2017)</th>
+                    <td>2017</td>
+                    <td>async/await, Object 정적 메소드(Object.values, Object.entries, Object.getOwnPropertyDescriptors)</td>
+                </tr>
+                <tr>
+                    <th>ES9<br>(ECMAScript 2018)</th>
+                    <td>2018</td>
+                    <td><a href="https://github.com/tc39/proposal-object-rest-spread" target="_blank">Object Rest/Spread 프로퍼티</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+</body>
+</html>

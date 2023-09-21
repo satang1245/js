@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1. 변수 (Variable)</title>
+<link rel="stylesheet" href="./css/simple.min.css">
+</head>
+<body>
+<header>
+    <h1>변수(Variable)</h1>
+    <p>변수는 하나의 값을 저장하기 위해 확보한 메모리 공간 자체 <br>또는 그 메모리 공간을 식별하기 위해 붙인 이름.</p>
+</header>
+<main>
+    <section>
+        <h2>변수는 왜 사용하는가?</h2>
+        <div class="language-javascript highlighter-rouge">
+            <div class="highlight">
+                <pre><code>var userId = 1; // 할당 (변수명 = 변수값)
+var userName = 'Lee';</code></pre>
+            </div>
+        </div>
+        <p>변수는 연산된 결과값을 재사용할 수 있도록 저장된 메모리 공간에 상징적인 이름을 붙인 것이다.
+            <br><em> *변수명은 <code>식별자</code>라고도 불린다.</em>
+        </p>
+
+        <hr>
+
+        <h2>변수는 어디에 저장되는가?</h2>
+        <p>변수는 자바스크립트 엔진내 관리영역인<mark>실행 컨텍스트</em></mark>에 저장되며, <br>실행 컨텍스트 내에 <code>키(key)</code> / <code>값(value)</code> 형식인 객체로 등록되어 관리된다. </p>
+
+        <hr>
+
+        <h2>호이스팅? 🤔</h2>
+        <p>자바스크립트의 특징</p>
+        <div class="language-javascript highlighter-rouge">
+            <div class="highlight">
+                <pre><code>console.log(score); // Uncaught ReferenceError: score is not defined</code></pre>
+            </div>
+        </div>
+        <div class="language-javascript highlighter-rouge">
+            <div class="highlight">
+                <pre><code>console.log(score); // undefined
+var score;</code></pre>
+            </div>
+        </div>
+        <hr>
+        <div class="language-javascript highlighter-rouge">
+            <div class="highlight">
+                <pre><code>console.log( score ); // undefined
+score = 9;
+var score;
+console.log( score ); // ?? </code></pre>
+            </div>
+        </div>
+        <details>
+            <summary>결과보기</summary>
+            <p><pre><code>console.log( score ); // undefined
+score = 9;
+var score;
+console.log( score ); // 9</code></pre></p>
+        </details>
+    </section>
+</main>
+<!-- [CDN] Code Highlights -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/javascript.min.js"></script>
+<script>hljs.highlightAll();</script>
+<script>
+
+</script>
+</body>
+</html>
