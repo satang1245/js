@@ -3,154 +3,179 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2. 데이터 타입</title>
+<title>3. 연산자</title>
 <link rel="stylesheet" href="./css/simple.min.css">
+<!-- jQuery cdn -->
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
 </head>
 <body>
 <header>
-    <h1>데이터 타입</h1>
-    <p>원시타입 (Primitive Type)</p>
+    <h1>변수 #2</h1>
+    <p>변수 선언 및 할당, 그리고 연산자</p>
 </header>
 <main>
     <section>
-        <h2>원시타입</h2>
-        <p>원시 타입의 값은 <code>변경 불가능한 값</code>이며, <code>값에 의한 전달</code>이다.</p>
+        <h2>변수 선언 및 할당</h2>
+        <pre><code class="language-javascript">var str;  // 변수 선언
+str = 'Hello World';  // 변수 할당
+str = 'Nice to meet you!'; // 변수 재할당
 
-        <article>
-            <h3><a href="#" class="btn-toggle"># Number</a></h3>
-            <div class="detail">
-                <p>C언어 또는 Java등 일반적인 프로그램언어에서는 정수, 실수를 구분하여 Int, long, float, double 등과 같은 숫자 타입이 존재한다.
-                    <br>하지만 자바스크립트는 독특하게 하나의 숫자타입(Number)만 존재한다. (Chrome 67버전 이후 `BigInt` 타입이 추가되었다.)
-                    <br><br><small>*<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/BigInt" target="_blank">BigInt 알아보기</a></small>
-                </p>
-                <p>모든 숫자는 표기법만 다를 뿐 모두 정수가 아닌 실수로 표기한다.</p>
-            
-            <pre><code class="language-javascript">var integer = 10;        // 정수
-var double = 10.12;      // 실수
-var negative = -20;      // 음의 정수
-var binary = 0b01000001; // 2진수
-var octal = 0o101;       // 8진수
-var hex = 0x41;          // 16진수</code></pre>
-    <pre><code class="language-javascript">console.log(binary); // 65
-console.log(octal);  // 65
-console.log(hex);    // 65
+// 변수 선언 및 할당
+var person = 'Son',
+    address = 'Seoul',
+    age = 29;
 
-// 표기법만 다를뿐 같은 값이다.
-console.log(binary === octal); // true
-console.log(octal === hex);    // true
+// 중복선언
+var x = 10; // 10;
+console.log(x) // 10
+var x = 120; // 120;
+console.log(x) // 120</code></pre>
+    </section>
 
-// 정수로 표시되지만 실제 처리는 실수로 처리한다.
-console.log(1 === 1.0); // true
+    <section>
+        <h2>명시적 타입변환, 암묵적 타입전환</h2>
+        <p>모든 값에는 타입이 있다. 개발자의 의도적으로 타입을 변환할 수 도 있는데, <br>이를 <b>명시적 타입 변환</b> 또는 <b>타입 캐스팅</b> 이라 한다.
+            <br>그 외에 자바스크립트 엔진에 의해 암묵적으로 자동 변환될 수 있는데, <br>이를 <b>암묵적 타입변환</b> 또는 <b>타입 강제 변환</b> 이라고 한다.</p>
+        <pre><code class="language-javascript">var x = 10;
 
-var result = 4 / 2;
-console.log(result); // 2</code></pre>
+// 명시적 타입 변환
+var str = x.toString(); // 숫자를 문자열로 타입 캐스팅한다.
+console.log(typeof str); // string
 
-            <p>Number 타입의 예외의 값들.</p>
-            <ul>
-                <li><mark>Infinity</mark>: 양의 무한대</li>
-                <li><mark>-Infinity</mark>: 음의 무한대</li>
-                <li><mark>NaN</mark>: 산술 연산 불가(not-a-number)</li>
-            </ul>
-            <pre><code class="language-javascript">var pInf = 10 / 0;  // 양의 무한대
-console.log(pInf);  // Infinity
+// 암묵적 타입 변환
+// 숫자 타입 x의 값을 바탕으로 새로운 문자열 타입의 값을 생성해 표현식을 평가한다.
+var str = x + '';
+console.log(typeof str); // string
 
-var nInf = 10 / -0; // 음의 무한대
-console.log(nInf);  // -Infinity
+'10' + 2 // '102'
+'10' * 2 // 20
+'10' - 1 // 9
+'10' / 2 // 5
+'9' % 2  // 1
+1 / 'two' // NaN
+'1' > 0   // true
 
-var nan = 1 * 'string'; // 산술 연산 불가
-console.log(nan);       // NaN</code></pre>
-                </div>
-        </article>
++true           // 1
++false          // 0
++null           // 0
++undefined      // NaN
++{}             // NaN
++[]             // 0
++[10, 20]       // NaN
++(function(){}) // NaN
 
-        <article>
-            <h3><a href="#" class="btn-toggle"># String</a></h3>
-            <div class="detail">
-                <p>문자열(String) 타입은 텍스트 데이터를 나타내는데 사용하며, <br>작은 따옴표(') 또는 큰 따옴표(") 안에 텍스트를 넣어 생성한다.
-                    <br><small>*가장 일반적인 표기법은 <mark>작은 따옴표</mark>를 사용하는 것이다.</small>
-                </p>
-                <p></p>
-                <pre><code class="language-javascript">var str = 'Hello';
+['hello','world'] + '' // 'hello,world'
 
-// 문자열은 유사배열이다.
-for (var i = 0; i < str.length; i++) {
-    console.log(str[i]);
+!0 // true
+!undefined // true
+!null // true
+!'' // true</code></pre>
+        <p><small><a href="https://poiemaweb.com/js-type-coercion#3-%EB%AA%85%EC%8B%9C%EC%A0%81-%ED%83%80%EC%9E%85-%EB%B3%80%ED%99%98" target="_blank">*명시적 타입 변환 자세히 보기</a></small></p>
+    </section>
+
+    <section>
+        <h3>스코프(scope)</h3>
+        <p>식별자(변수 및 함수 등)를 사용할 수 있는 유효범위
+            <br>변수는 전역 또는 코드 블록(if, for, while, try/catch 등)이나 함수내에 선언하여 사용되는데, <br>이 때 변수는 중첩되어 선언이 될 수 있으며,
+            다른 코드가 <u>자신을 참조할 수 있는 유효한 범위</u>를 <br>가지는데 이를 스코프라 한다.
+        </p>
+        <ul>
+            <li><b>전역 스코프(Global scope)</b><br><small>코드 어디에서든 참조할 수 있다.</small></li>
+            <li><b>지역 스코프(Local scope or Function-lavel scope)</b><br><small>자신을 포함한 함수 및 하위 함수에서만 참조할 수 있다.</small></li>
+        </ul>
+        <pre><code class="language-javascript">var global = 'global'; // 전역 스코프
+
+function foo() {
+  var local = 'local'; // 지역 스코프
+  console.log(global);
+  console.log(local);
+}
+foo();
+
+console.log(global);
+console.log(local); // Uncaught ReferenceError: local is not defined
+
+---
+
+var x = 10;
+
+function foo(){
+  var x = 100;
+  console.log('A:', x);
+
+  function bar(){   // 내부함수
+    x = 1000;
+    console.log('B:', x); // ?
+  }
+
+  bar();
+}
+foo();
+console.log(x); 
+
+---
+
+var x = 1;
+
+function foo() {
+  var x = 10;
+  bar();
 }
 
-// 문자열을 변경할 수 없다.
-str[0] = 'S';
-console.log(str); // string
+function bar() {
+  console.log(x);
+}
 
-// 변수 재할당 가능
-str += ' World';
-                </code></pre>
-            </div>
-        </article>
+foo(); // ?
+bar(); // ?
 
-        <article>
-            <h3><a href="#" class="btn-toggle"># Boolean</a></h3>
-            <div class="detail">
-                <p>논리 타입으로 참(<mark>true</mark>) 또는 거짓(<mark>false</mark>)만 표현 가능하다.
-                    <br>*해당 타입은 조건(if)문에서 자주 사용된다.
-                    <br>*조건문에서는 <mark>null</mark>, <mark>undefined</mark>, 숫자(<mark>0</mark>)은 모두 <code>false</code>로 간주한다.
-                    <br><small>해당 관련글은 암묵적 타입변환에서 알아보자.</small>
-                </p>
-                <small><a href="https://poiemaweb.com/js-type-coercion" target="_blank">암묵적 타입변환에 대해 알아보기</a></small>
-                <pre><code class="language-javascript">var foo = true;
-var bar = false;
+---
 
-// typeof 연산자는 타입을 나타내는 문자열을 반환한다.
-console.log(typeof foo); // boolean
-console.log(typeof bar); // boolean</code></pre>
-            </div>
-        </article>
-    </section>
+var x = 10; // 전역 변수
 
+function foo () {
+  // 선언하지 않은 변수
+  y = 20;
+  console.log(x + y);
+}
 
-    <section>
-        <article>
-            <h3>상수(constant) ??? 😳</h3>
-            <p>변수 - 값의 재할당이 가능한 것을 말하며, 상수는 값의 재할당이 불가능한 것을 말한다.
-                <br><small>*단, const 키워드로 선언된 변수가 객체 인 경우, 값을 변경 할 수 있다.</small>
-                <br><code>const 키워드는 재할당을 금지할 뿐 "불편"을 의미하지 않는다.</code>
-            </p>
-        </article>
+foo(); // 30
+
+console.log(window.x); // 10
+console.log(window.y); // 20
+
+delete x; // 전역 변수는 삭제되지 않는다.
+delete y; // 프로퍼티는 삭제된다.
+
+console.log(window.x); // 10
+console.log(window.y); // undefined</code></pre>
+
+    <p><small><a href="https://poiemaweb.com/js-scope#9-%EC%B5%9C%EC%86%8C%ED%95%9C%EC%9D%98-%EC%A0%84%EC%97%AD%EB%B3%80%EC%88%98-%EC%82%AC%EC%9A%A9" target="_blank">최소한의 전역변수를 사용하기 위한 방안</a></small></p>
     </section>
 
     <section>
-        <article>
-            <h3>네이밍</h3>
-            <p>좋은 코드란? <br><small>*주석을 단 설명이 없어도 변수 이름을 통하여 존재 목적을 쉽게 이해할 수 있는 소스.</small></p>
-            <pre><code class="language-javascript">// 😨 Bed
-var x = 'satang1245'; // x는 아이디를 의미한다.
-var y = '1987.12.25'; // y는 생년월일을 의미한다.
+        <h3>호이스팅? 🤔</h3>
+        <p>자바스크립트의 특징</p>
+        <pre><code class="language-javascript">console.log(score); // Uncaught ReferenceError: score is not defined</code></pre>
+        <pre><code class="language-javascript">console.log(score); // undefined
+var score;</code></pre>
 
-// 😄 Good
-var userId = 'satang1245';
-var birthday = '1998.12.25';</code></pre>
-
-            <p><strong>식별자 네이밍 규칙</strong></p>
-            <ul>
-                <li><small>특수문자를 제외한 <mark>문자</mark>, <mark>숫자</mark>, <mark>언더스코어(_)</mark>, <mark>달러 기호($)</mark>를 포함할 수 있다.
-                    <br>단, 예약어를 사용할 수 없으며, 숫자로 시작할 수 없다.</small></li>
-                <li><small>ES5부터 식별자를 만들 때, 유니코드 문자를 허용함으로 한글이나 일본어 식별자도 사용이 가능해졌지만, 권장하진 않는다.</small></li>
-                <li><small>일관성을 유지한다면 어떠한 네이밍 컨벤션을 사용해도 좋지만, 가독성을 높이기 위하여 ECMAScript사양에 정의되어 있는 네이밍 컨벤션을 따르는 것이 유리하다.</small></li>
-            </ul>
-            <p><strong>네이밍 컨벤션</strong></p>
-            <pre><code class="language-javascript">// 카멜 케이스(camelCase) - 중간에 대문자가 낙타의 등과 비슷하다고 하여 지어졌다.
-var firstName;
-
-// 스네이크 케이스 - 언더바(_)가 뱀처럼 생겼다고 하여 지어졌다.
-var first_name;
-
-// 파스칼 케이스 - 첫 글자와 중간 글자들이 대문자인 경우, 프로그램 언어인 파스칼 언어의 표기법과 유사하다고 하여 파스칼 케이스라고 한다.
-var FirstName;
-
-// 헝가리언 케이스 (typeHungarianCase) - 이 표기법 개발자가 헝가리 사람이라 이렇게 지어졌다고 한다.
-var objFullName; // type + identifier;
-var $elem = document.querySelector('myId'); // DOM 노드
-            </code></pre>
-            <p><small>*변수나 함수의 이름에는 카멜케이스, 생성자 함수 또는 클래스 이름에는 파스칼 케이스를 사용한다.</small></p>
-        </article>
+        <pre><code class="language-javascript">console.log( score ); // ??
+score = 9;
+var score;
+console.log( score ); // ?? </code></pre>
+        <details>
+            <summary><kbd>결과보기</kbd></summary>
+            <div>
+                <pre><code class="language-javascript">console.log( score ); // undefined
+score = 9;
+var score;
+console.log( score ); // 9</code></pre>
+            </div>
+        </details>
     </section>
 </main>
 
@@ -159,8 +184,8 @@ var $elem = document.querySelector('myId'); // DOM 노드
     <ul>
         <li><a href="./index.html">HOME</a></li>
         <li><a href="./1.html">변수</a></li>
-        <li><a href="./2.html">데이터 타입</a></li>
-        <li><a href="./3.html">연산자</a></li>
+        <li><a href="./2.html">변수 #2</a></li>
+        <li><a href="./3.html">데이터 타입</a></li>
     </ul>
 </details>
 <details open>
@@ -168,6 +193,7 @@ var $elem = document.querySelector('myId'); // DOM 노드
     <ul>
         <li><a href="https://ko.javascript.info/first-steps" target="_blank">JAVSCRIPT.INFO</a></li>
         <li><a href="https://poiemaweb.com/coding" target="_blank">모던 자바스크립트 Deep Dive</a></li>
+        <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators" target="_blank">mdm web docs</a></li>
     </ul>
 </details>
 
@@ -180,15 +206,5 @@ var $elem = document.querySelector('myId'); // DOM 노드
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/javascript.min.js"></script>
 <script>hljs.highlightAll({language: 'javascript'});</script>
-<script>
-const $toggleBtns = document.querySelectorAll('.btn-toggle');
-Array.from($toggleBtns).forEach($toggleBtn=> {
-    $toggleBtn.addEventListener('click', function() {
-        const $content = this.parentNode.nextElementSibling;
-        $content.classList.toggle('open');
-        return false;
-    }, false);
-});
-</script>
 </body>
 </html>

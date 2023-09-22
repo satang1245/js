@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>1. 변수 (Variable)</title>
 <link rel="stylesheet" href="./css/simple.min.css">
+<!-- jQuery cdn -->
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
 </head>
 <body>
 <header>
@@ -125,11 +130,11 @@ function() {}</pre>
 
         <h3>문</h3>
         <p>문이란, 컴퓨터에 의해 프로그램인 스크립트가 단계별로 실행되는 명령들의 집합을 의미하며,
-            <br>리터럴, 연산자, 표현식, 키워드 등으로 구성되고 세미콜론(;)으로 끝나야 한다.</p>
-            <p>문은 블럭으로 그룹화 할 수 있다. (추후 스코프와 관련있기 때문에 알아둬야 함)</p>
-            <div class="language-javascript highlighter-rouge">
-                <div class="highlight">
-                    <pre><code class="language-javascript">// 함수
+            <br>리터럴, 연산자, 표현식, 키워드 등으로 구성되고 세미콜론(;)으로 끝나야 한다.
+            <br>*<small>문의 끝에 붙이는 세미콜론은 자바스크립트 엔진이 스크립트를 해석할 때 문의 끝이라고 예측되는 지점에 세미콜론을 자동으로 붙여주는 세미콜론 자동 삽입 기능(ASI, automatic semicolon insertion)이 포함되어 있다. 하지만 세미콜론 자동 삽입 기능의 예측과 개발자의 예측과 다른 경우가 간혹 있어서 사용에 주의해야 한다.</small>
+        </p>
+        <p>문은 블럭으로 그룹화 할 수 있다. (추후 스코프와 관련있기 때문에 알아둬야 함)</p>
+        <pre><code class="language-javascript">// 함수
 function myFunc(x,y) {
     return x + y;
 }
@@ -140,81 +145,59 @@ if (x > 50) {
 }
 
 // for 문
-for (var i=0; i<10; i+=1) {
+for (var i=0; i<10; i++) {
     // do something..
 }</code></pre>
-                </div>
-            </div>
 
-            <details>
-                <summary><kbd>유효범위 맛보기</kbd></summary>
-                <div>
-                    <pre><code>// 다음의 결과값을 예측해보자.
+        <details>
+            <summary><kbd>유효범위 맛보기</kbd></summary>
+            <div>
+                <pre><code>// 다음의 결과값을 예측해보자.
 if (1 < 10 ) {
-    let a = 'a';
+let a = 'a';
 } else if ( 1 < -1) {
-    let a = 'b';
+let a = 'b';
 }
 console.log(a); // ??
 
 if (1 < 10 ) {
-    a = 'a';
+a = 'a';
 } else if ( 1 < -1) {
-    a = 'b';
+a = 'b';
 }
 let a;
 console.log(a); // ??
 
 if (1 < 10 ) {
-    a = 'a';
+a = 'a';
 } else if ( 1 < -1) {
-    a = 'b';
+a = 'b';
 }
 var a;
 console.log(a); // ??
 
 let a;
 if (1 < 10 ) {
-    a = 'a';
+a = 'a';
 } else if ( 1 < -1) {
-    a = 'b';
+a = 'b';
 }
 console.log(a); // ??
-                    </code></pre>
-                </div>
-            </details>
+                </code></pre>
+            </div>
+        </details>
         <hr>
 
-        <h3>호이스팅? 🤔</h3>
-        <p>자바스크립트의 특징</p>
-        <div class="language-javascript highlighter-rouge">
-            <div class="highlight">
-                <pre><code class="language-javascript">console.log(score); // Uncaught ReferenceError: score is not defined</code></pre>
-            </div>
-        </div>
-        <div class="language-javascript highlighter-rouge">
-            <div class="highlight">
-                <pre><code class="language-javascript">console.log(score); // undefined
-var score;</code></pre>
-            </div>
-        </div>
+    </section>
 
-        <div class="language-javascript highlighter-rouge">
-            <div class="highlight">
-                <pre><code class="language-javascript">console.log( score ); // undefined
-score = 9;
-var score;
-console.log( score ); // ?? </code></pre>
-            </div>
-        </div>
-        <details>
-            <summary><kbd>결과보기</kbd></summary>
-            <div>
-                <pre><code class="language-javascript">console.log( score ); // undefined
-score = 9;
-var score;
-console.log( score ); // 9</code></pre></div>
-        </details>
+    <section>
+        <article>
+            <h3>상수(constant) ??? 😳</h3>
+            <p>변수 - 값의 재할당이 가능한 것을 말하며, 상수는 값의 재할당이 불가능한 것을 말한다.
+                <br><small>*단, <mark>const</mark> 키워드로 선언된 변수가 <u>객체</u>인 경우, 값을 변경 할 수 있다.</small>
+                <br><small>const 키워드는 <u>재할당을 금지</u>할 뿐 <code>"불변"</code>을 의미하지 않는다.</small>
+            </p>
+        </article>
     </section>
 
 </main>
@@ -224,8 +207,8 @@ console.log( score ); // 9</code></pre></div>
     <ul>
         <li><a href="./index.html">HOME</a></li>
         <li><a href="./1.html">변수</a></li>
-        <li><a href="./2.html">데이터 타입</a></li>
-        <li><a href="./3.html">연산자</a></li>
+        <li><a href="./2.html">변수 #2</a></li>
+        <li><a href="./3.html">데이터 타입</a></li>
     </ul>
 </details>
 <details open>

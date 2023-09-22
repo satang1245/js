@@ -3,17 +3,211 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3. 연산자</title>
+<title>2. 데이터 타입</title>
 <link rel="stylesheet" href="./css/simple.min.css">
+<!-- jQuery cdn -->
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
 </head>
 <body>
 <header>
-    <h1>식 및 연산자</h1>
-    <p></p>
+    <h1>데이터 타입</h1>
+    <p>원시타입 (Primitive Type), 객체타입 (Object Type or Reference Type)</p>
 </header>
 <main>
     <section>
+        <h2>원시타입</h2>
+        <p>원시 타입의 값은 <code>변경 불가능한 값</code>이며, <code>값에 의한 전달</code>이다.</p>
 
+        <article id="number">
+            <h3><a href="#number" class="btn-toggle"># number</a></h3>
+            <div class="detail open">
+                <p>C언어 또는 Java등 일반적인 프로그램언어에서는 정수, 실수를 구분하여 Int, long, float, double 등과 같은 숫자 타입이 존재한다.
+                    <br>하지만 자바스크립트는 독특하게 하나의 숫자타입(Number)만 존재한다. (Chrome 67버전 이후 `BigInt` 타입이 추가되었다.)
+                    <br><br><small>*<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/BigInt" target="_blank">BigInt 알아보기</a></small>
+                </p>
+                <p>모든 숫자는 표기법만 다를 뿐 모두 정수가 아닌 실수로 표기한다.</p>
+            
+                <pre><code class="language-javascript">var integer = 10;        // 정수
+var double = 10.12;      // 실수
+var negative = -20;      // 음의 정수
+var binary = 0b01000001; // 2진수
+var octal = 0o101;       // 8진수
+var hex = 0x41;          // 16진수</code></pre>
+                <pre><code class="language-javascript">console.log(binary); // 65
+console.log(octal);  // 65
+console.log(hex);    // 65
+
+// 표기법만 다를뿐 같은 값이다.
+console.log(binary === octal); // true
+console.log(octal === hex);    // true
+
+// 정수로 표시되지만 실제 처리는 실수로 처리한다.
+console.log(1 === 1.0); // true
+
+var result = 4 / 2;
+console.log(result); // 2</code></pre>
+
+                <p>Number 타입의 예외의 값들.</p>
+                <ul>
+                    <li><mark>Infinity</mark>: 양의 무한대</li>
+                    <li><mark>-Infinity</mark>: 음의 무한대</li>
+                    <li><mark>NaN</mark>: 산술 연산 불가(not-a-number)</li>
+                </ul>
+                <pre><code class="language-javascript">var pInf = 10 / 0;  // 양의 무한대
+console.log(pInf);  // Infinity
+
+var nInf = 10 / -0; // 음의 무한대
+console.log(nInf);  // -Infinity
+
+var nan = 1 * 'string'; // 산술 연산 불가
+console.log(nan);       // NaN</code></pre>
+            </div>
+        </article>
+
+        <article id="string">
+            <h3><a href="#string" class="btn-toggle"># string</a></h3>
+            <div class="detail">
+                <p>문자열(String) 타입은 텍스트 데이터를 나타내는데 사용하며, <br>작은 따옴표(') 또는 큰 따옴표(") 안에 텍스트를 넣어 생성한다.
+                    <br><small>*가장 일반적인 표기법은 <mark>작은 따옴표</mark>를 사용하는 것이다.</small>
+                </p>
+                <p></p>
+                <pre><code class="language-javascript">var str = 'Hello';
+
+// 문자열은 유사배열이다.
+for (var i = 0; i < str.length; i++) {
+    console.log(str[i]);
+}
+
+// 문자열을 변경할 수 없다.
+str[0] = 'S';
+console.log(str); // string
+
+// 변수 재할당 가능
+str += ' World';</code></pre>
+            </div>
+        </article>
+
+        <article id="boolean">
+            <h3><a href="#boolean" class="btn-toggle"># boolean</a></h3>
+            <div class="detail">
+                <p>논리 타입으로 참(<mark>true</mark>) 또는 거짓(<mark>false</mark>)만 표현 가능하다.
+                    <br>*해당 타입은 조건(if)문에서 자주 사용된다.
+                    <br>*조건문에서는 <mark>null</mark>, <mark>undefined</mark>, 숫자(<mark>0</mark>)은 모두 <code>false</code>로 간주한다.
+                    <br><small>해당 관련글은 암묵적 타입변환에서 알아보자.</small>
+                </p>
+                <small><a href="https://poiemaweb.com/js-type-coercion" target="_blank">암묵적 타입변환에 대해 알아보기</a></small>
+                <pre><code class="language-javascript">var foo = true;
+var bar = false;
+
+// typeof 연산자는 타입을 나타내는 문자열을 반환한다.
+console.log(typeof foo); // boolean
+console.log(typeof bar); // boolean</code></pre>
+            </div>
+        </article>
+
+        <article id="undefined">
+            <h3><a href="#undefined" class="btn-toggle"># undefined</a></h3>
+            <div class="detail">
+                <p>undefined 타입의 경우 <mark>undefined</mark>의 유일한 값을 가진다.  
+                    <br>변수 선언 이후 별도의 값을 할당하지 않을 경우나 존재하지 않는 객체 프로퍼티에 접근할 경우 해당 값을 반환한다.</p>
+                <pre><code class="language-javascript">var foo;
+console.log(foo); // undefined</code></pre>
+            </div>
+        </article>
+
+        <article id="null">
+            <h3><a href="#null" class="btn-toggle"># null</a></h3>
+            <div class="detail">
+                <p>null 타입의 경우 <mark>null</mark>의 유일한 값을 가진다.  
+                    <br>변수의 값이 없다는 것을 명시적으로 표현할 때 사용하며, 
+                    <br>함수나 DOM 검색등에서 <u>유효한 값을 반환할 수 없을 경우</u> <mark>null</mark>을 반환한다.</p>
+                <small>*자바스크립트의 경우 대소문자를 구분하기 때문에, Null이나 NULL등과 다름으로 사용에 유의해야 한다.</small>
+                <pre><code class="language-javascript">var element = document.querySelector('.myElem');
+// HTML 문서에 myElem 클래스를 갖는 요소가 없다면 null을 반환한다.
+console.log(element); // null</code></pre>
+                <p><code>typeof</code>를 이용하여 null 값을 연산해 보면 null이 아닌 object를 반환하는데, 이는 자바스크립트 자체적인 오류 이다.</p>
+                <pre><code class="language-javascript">// 연산시 `==`와 `===`의 차이를 주의하자.
+typeof undefined     // "undefined"
+typeof null; // "object"
+null === undefined   // false
+null  == undefined   // true
+var foo = null;
+typeof foo === null // false
+foo === null // true
+</code></pre>
+            </div>
+        </article>
+
+        <article id="symbol">
+            <h3><a href="#symbol" class="btn-toggle"># symbol</a></h3>
+            <div class="detail">
+                <p>ES6에서 새롭게 추가된 타입으로, 고유한 프로퍼티 키(property key)를 만들기 위해 사용된다.</p>
+                <pre><code class="language-javascript">var key = Symbol('key'); // Symbol(key)
+var obj = { 'key' : 'value' }; // obj = { key: 'value' }
+
+obj['key'] == 'value2'; // obj = { key: 'value2' }
+obj[key] == 'value3'; // obj = { key: 'value2', Symbol(key): 'value3' }</code></pre>
+            </div>
+        </article>
+    </section>
+
+    <section>
+        <h2>객체타입</h2>
+        <p>자바스크립트는 객체 지향 프로그래밍으로 설계된 언어로, 
+            <br>원시 타입을 제외한 모든 값(<mark>배열</mark>, <mark>함수</mark>, <mark>정규표현식</mark>)은 객체라 한다.
+            <br><small>*객체는 키(key)와 값(value)로 이루어진 프로퍼티 들의 모음.</small>
+        </p>
+    </section>
+
+
+    <section>
+        <article>
+            <h3>네이밍</h3>
+            <p>좋은 코드란? <br><small>*주석을 단 설명이 없어도 변수 이름을 통하여 존재 목적을 쉽게 이해할 수 있는 소스.</small></p>
+            <pre><code class="language-javascript">// 😨 Bed
+var x = 'satang1245'; // x는 아이디를 의미한다.
+var y = '1987.12.25'; // y는 생년월일을 의미한다.
+
+// 😄 Good
+var userId = 'satang1245';
+var birthday = '1998.12.25';</code></pre>
+
+            <p><strong>식별자 네이밍 규칙</strong></p>
+            <ul>
+                <li><small>특수문자를 제외한 <i>문자</i>, <i>숫자</i>, <i>언더스코어(_)</i>, <i>달러 기호($)</i>를 포함할 수 있다.
+                    <br>단, <u>예약어</u>를 사용할 수 없으며, 숫자로 시작할 수 없다.</small></li>
+                <li><small>ES5부터 식별자를 만들 때, 유니코드 문자를 허용함으로 한글이나 일본어 식별자도 사용이 가능해졌지만 권장하진 않는다.</small></li>
+                <li><small>일관성을 유지한다면 어떠한 네이밍 컨벤션을 사용해도 좋지만, 가독성을 높이기 위하여 ECMAScript사양에 정의되어 있는 네이밍 컨벤션을 따르는 것이 유리하다.</small></li>
+                <li><small>일반적으로 ,  </small></li>
+            </ul>
+            <p><strong>네이밍 컨벤션</strong></p>
+            <pre><code class="language-javascript">// 카멜 케이스(camelCase) - 중간에 대문자가 낙타의 등과 비슷하다고 하여 지어졌다.
+var firstName;
+
+// 스네이크 케이스 - 언더바(_)가 뱀처럼 생겼다고 하여 지어졌다.
+var first_name;
+
+// 파스칼 케이스 - 첫 글자와 중간 글자들이 대문자인 경우, 프로그램 언어인 파스칼 언어의 표기법과 유사하다고 하여 파스칼 케이스라고 한다.
+var FirstName;
+
+// 헝가리언 케이스 (typeHungarianCase) - 이 표기법 개발자가 헝가리 사람이라 이렇게 지어졌다고 한다.
+var objFullName; // type + identifier;
+var $elem = document.querySelector('myId'); // DOM 노드
+            </code></pre>
+            <ul>
+                <li><small><b>변수</b>나 <b>함수</b>의 이름에는 <code>카멜케이스</code>, <b>생성자 함수</b> 또는 <b>클래스</b> 이름에는 <code>파스칼 케이스</code>를 사용한다.</small></li>
+                <li><small><b>상수</b>의 경우 <u>대문자</u>로만 이루어진 <code>스네이크 케이스</code>와 런타임과정에서 계산된 후 <br>값이 변경되지 않을 경우 <u>일반적인 규칙</u>을 따른다.</small></li>
+            </ul>
+            <pre><code class="language-javascript">// 대문자로만 이루어진 상수는 하드코딩이 가능한 값을 정의할 때 사용.
+var PI = '3.141592653589793';
+
+// 그 외에는 일반적인 규칙을 따름
+var pageLoadTime = /* 웹 페이지 로드하는데 걸린 시간 */
+            </code></pre>
+        </article>
     </section>
 </main>
 
@@ -22,8 +216,8 @@
     <ul>
         <li><a href="./index.html">HOME</a></li>
         <li><a href="./1.html">변수</a></li>
-        <li><a href="./2.html">데이터 타입</a></li>
-        <li><a href="./3.html">연산자</a></li>
+        <li><a href="./2.html">변수 #2</a></li>
+        <li><a href="./3.html">데이터 타입</a></li>
     </ul>
 </details>
 <details open>
@@ -31,7 +225,6 @@
     <ul>
         <li><a href="https://ko.javascript.info/first-steps" target="_blank">JAVSCRIPT.INFO</a></li>
         <li><a href="https://poiemaweb.com/coding" target="_blank">모던 자바스크립트 Deep Dive</a></li>
-        <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators" target="_blank">mdm web docs</a></li>
     </ul>
 </details>
 
