@@ -152,35 +152,38 @@ for (var i=0; i<10; i++) {
         <details>
             <summary><kbd>유효범위 맛보기</kbd></summary>
             <div>
-                <pre><code>// 다음의 결과값을 예측해보자.
+                <pre><code class="language-javascript">// 다음의 결과값을 예측해보자.
 if (1 < 10 ) {
-let a = 'a';
+    let a = 'a';
 } else if ( 1 < -1) {
-let a = 'b';
+    let a = 'b';
 }
 console.log(a); // ??
 
+---
 if (1 < 10 ) {
-a = 'a';
+    a = 'a';
 } else if ( 1 < -1) {
-a = 'b';
+    a = 'b';
 }
 let a;
 console.log(a); // ??
 
+---
 if (1 < 10 ) {
-a = 'a';
+    a = 'a';
 } else if ( 1 < -1) {
-a = 'b';
+    a = 'b';
 }
 var a;
 console.log(a); // ??
 
+---
 let a;
 if (1 < 10 ) {
-a = 'a';
+    a = 'a';
 } else if ( 1 < -1) {
-a = 'b';
+    a = 'b';
 }
 console.log(a); // ??
                 </code></pre>

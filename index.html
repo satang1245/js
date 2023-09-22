@@ -97,6 +97,20 @@
         </table>
     </section>
 
+    <article>
+        <h3>Babel 과 Polyfill</h3>
+        <ul>
+            <li>브라우저에서 지원하지 않는 문법을 호환가능한 버전으로 컴파일(컴파일/트랜스파일) 해주는 게 babel이다.
+                <br>하지만 모두 변환이 가능하지 않는데, 지원하지 않은 함수(메소드)가 없다면 이는 컴파일이 되어도 실행되지 않을 것이다.
+                이럴 때 지원되지 않는 코드를 추가해주는게 polyfill 이다.</li>
+            <li><small><b>Babel</b>은 window 전역 공간에서 생성되는 객체나 메소드가 아닌 <u>새로운 문법</u> (const, let, spred operator, arrow function, call 등)을 컴파일 해준다.</small></li>
+            <li><small><b>Polyfill</b>의 경우, 표준에 새롭게 추가된 함수나 기존 함수를 수정하여 스크립트가 최신 표준을 준수할 수 <br>있도록 도와준다.</small></li>
+        </ul>
+        <p>
+            *<small><a href="https://github.com/zloirock/core-js" target="_blank">core.js (다양한 폴리필 제공)</a></small>
+            <br>*<small><a href="https://polyfill.io/v3/" target="_blank">polyfill.io (기능, 브라우저에 따른 폴리필 스크립트 제공)</a></small>
+        </p>
+    </article>
 </main>
 
 <details open>
