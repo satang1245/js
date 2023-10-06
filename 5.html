@@ -25,7 +25,7 @@
         <p>주어진 조건에 따른 평가 결과에 따른 코드 블럭문을 실행한다.</p>
         <article>
             <h3><a href="#if" class="btn-toggle"># if 문</a></h3>
-            <div class="detail open">
+            <div id="if" class="detail">
                 <pre><code class="language-javascript">// if문
 if ( 조건식1 ) { 
     // 조건식1이 참이면 코드 블럭 실행
@@ -71,7 +71,7 @@ console.log(kind);</code></pre>
 
         <article>
             <h3><a href="#switch" class="btn-toggle"># switch 문</a></h3>
-            <div class="detail open">
+            <div id="switch" class="detail">
                 <pre><code class="language-javascript">// switch문
 switch (표현식) {
     case 표현식1:
@@ -143,7 +143,7 @@ var monthName = monthNameArr[month - 1]; // 배열의 접근의 경우 배열의
         <p>조건식이 거짓이 될 때까지 코드블럭을 실행한다.</p>
         <article>
             <h3><a href="#for" class="btn-toggle"># for 문</a></h3>
-            <div class="detail open">
+            <div id="for" class="detail">
                 <p>for 문은 조건식이 거짓으로 판별될 때까지 코드 블록을 반복 실행</p>
                 <pre><code class="language-javascript">for (초기화식; 조건식; 증감식) {
     조건식이 참인 경우 반복 실행될 문;
@@ -170,7 +170,7 @@ for (var i = 1; i <= 6; i++) {
 
         <article>
             <h3><a href="#while" class="btn-toggle"># while 문</a></h3>
-            <div class="detail open">
+            <div id="while" class="detail">
                 <p>while 문은 조건식이 거짓으로 판별될 때까지 코드 블록을 반복 실행</p>
                 <pre><code class="language-javascript">while (조건식) {
     조건식이 참인 경우 반복 실행될 문;
@@ -185,6 +185,122 @@ while (count < 3) { // 조건식
 }</code></pre>
                     </div>
                 </details>
+            </div>
+        </article>
+        <article>
+            <h3><a href="#do-while" class="btn-toggle"># do...while 문</a></h3>
+            <div id="do-while" class="detail">
+                <p>do...while 문은 코드 블럭을 실행하고 조건식을 평가.<small>*따라서 코드 블럭은 무조건 한번 이상 실행</small></p>
+                <pre><code class="language-javascript">do {
+    조건식이 참인 경우 반복 실행될 문;
+} while (조건식)</code></pre>
+                <details>
+                    <summary><kbd>예시보기</kbd></summary>
+                    <div class="details">
+                        <pre><code class="language-javascript">var count = 10; // 초기화식;
+do { // 조건식
+    console.log('count: ', count);
+    count += 1; // 증감식
+} while (count < 5)</code></pre>
+                    </div>
+                </details>
+            </div>
+        </article>
+        <article>
+            <h3><a href="#for-in-n-of" class="btn-toggle"># for...in & for...of</a></h3>
+            <div id="for-in-n-of" class="detail">
+                <strong>for...in 문</strong>
+                <ul>
+                    <li><small>객체의 모든 열거가능한 속성에 대해 반복 실행</small></li>
+                    <li><small>객체의 key값에 접근 가능, value값에는 직접 접근 불가</small></li>
+                    <li><small>모든 객체에서 사용 가능</small></li>
+                </ul>
+                <pre><code class="language-javascript">// for in문
+for (const variable in object) {
+    statement;
+}
+
+// 예제
+const obj = { a: 1, b: 2, c: 3 };
+
+for (const prop in obj) {
+  console.log(`${prop}: ${obj[prop]}`);
+}
+//output: a: 1, b: 2, c: 3 
+
+const obj2 = ['a','b','c'];
+for (const prop in obj2) {
+    console.log(`${prop}: ${obj2[prop]}`);
+}
+//output: 1: a, 2: b, 3: b</code></pre>
+                <strong>for...of 문(ES6에 추가)</strong>
+                <ul>
+                    <li><small>반복 가능한 객체(<a href="https://ko.javascript.info/iterable" target="_blank">iterable</a>)를 순회할 수 있도록 해줌</small></li>
+                    <li><small>Array, Map, Set, arguments 등이 해당됨 (Object는 해당 X)</small></li>
+                    <li><small>컬렉션 전용으로 객체보다는, [Symbol.iterator] 속성이 있는 모든 컬렉션 요소에 사용</small></li>
+                </ul>
+                <pre><code class="language-javascript">// Array
+let iterable = [10, 20, 30];
+for (let value of iterable) {
+    console.log(value);
+}
+// output: 10,20,30
+
+---
+// String
+let iterable = 'Hello';
+for (let value of Hello) {
+    console.log(value);
+}
+// output: "h","e","l","l","o";
+
+---
+// Object
+let obj = { a: 1, b: 2, c: 3 };
+for (const prop in obj) {
+  console.log(`${prop}: ${obj[prop]}`);
+}
+// output: Uncaught TypeError: obj is not iterable
+
+---
+// DOM 컬렉션에 대한 반복
+let articleParagraphs = document.querySelectorAll("p");
+
+for (let paragraph of articleParagraphs) {
+  console.log( paragraph );
+  // paragraph.classList.add('read');
+}
+// output: NodeList(9) [p, p, p, p, p, p, p, p, p]
+
+                    </code></pre>   
+                <p>for...in문과 for...of의 차이점</p>
+                <small>for in: 객체 순환(Key값을 반환)<br>for of: 배열 순환(value값을 반환)</small>
+            </div>
+            
+        </article>
+
+        <article>
+            <h3><a href="#switch" class="btn-toggle"># break & continue</a></h3>
+            <div class="detail">
+                <p>break문<br><small>반복문(for, for-in, for-of, while, do-while)의 코드 블록 실행 중 현 지점에서 중단하고 반복문 자체를 벗어날 때 사용함.</small></p>
+                <pre><code class="language-javascript">// break문
+var count = 0;
+for(var i=0; i<20; i++) {
+    if ( i > 5 ) {
+        break;
+    }
+    count++;
+}
+console.log(count);
+                </code></pre>
+                <p>continue문<br><small>반복문(for, for-in, for-of, while, do-while)의 코드 블록 실행을 현 지점에서 중단하고 다음 증감식으로 이동함. </small></p>
+                <pre><code class="language-javascript">// continue문을 이용한 홀수만 출력하기
+for(var i=0; i<10; i++) {
+    if ( i % 2 == 0 ) {
+        continue;
+    }
+    console.log('result i값 :', i);
+}</code></pre>
             </div>
         </article>
     </section>
@@ -204,8 +320,8 @@ while (count < 3) { // 조건식
 <details open>
     <summary>참조</summary>
     <ul>
-        <li><a href="https://ko.javascript.info/first-steps" target="_blank">JAVSCRIPT.INFO</a></li>
-        <li><a href="https://poiemaweb.com/coding" target="_blank">모던 자바스크립트 Deep Dive</a></li>
+        <li><a href="https://ko.javascript.info/while-for" target="_blank">JAVSCRIPT.INFO</a></li>
+        <li><a href="https://poiemaweb.com/js-control-flow" target="_blank">모던 자바스크립트 Deep Dive</a></li>
     </ul>
 </details>
 
