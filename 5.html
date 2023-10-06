@@ -257,7 +257,7 @@ for (let value of Hello) {
 ---
 // Object
 let obj = { a: 1, b: 2, c: 3 };
-for (const prop in obj) {
+for (const prop of obj) {
   console.log(`${prop}: ${obj[prop]}`);
 }
 // output: Uncaught TypeError: obj is not iterable
