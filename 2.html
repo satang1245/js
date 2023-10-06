@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3. 연산자</title>
+<title>4. 변수#2</title>
 <link rel="stylesheet" href="./css/simple.min.css">
 <!-- jQuery cdn -->
 <script
@@ -53,6 +53,7 @@ console.log(typeof str); // string
 // 숫자 타입 x의 값을 바탕으로 새로운 문자열 타입의 값을 생성해 표현식을 평가한다.
 var str = x + '';
 console.log(typeof str); // string
+-'10' // -10;
 
 '10' + 2 // '102'
 '10' * 2 // 20
@@ -71,6 +72,9 @@ console.log(typeof str); // string
 +[10, 20]       // NaN
 +(function(){}) // NaN
 
+1 + true        // 2
+1 + undefined   // NaN
+
 ['hello','world'] + '' // 'hello,world'
 
 !0 // true
@@ -78,6 +82,161 @@ console.log(typeof str); // string
 !null // true
 !'' // true</code></pre>
         <p><small><a href="https://poiemaweb.com/js-type-coercion#3-%EB%AA%85%EC%8B%9C%EC%A0%81-%ED%83%80%EC%9E%85-%EB%B3%80%ED%99%98" target="_blank">*명시적 타입 변환 자세히 보기</a></small></p>
+    </section>
+
+    <section>
+        <h3>연산자</h3>
+        <strong>증감 연산자</strong>
+        <pre><code class="language-javascript">var x = 5, result;
+result = x++;
+console.log(result, x);
+
+result = ++x;
+console.log(result, x);
+
+result = x--;
+console.log(result, x);
+
+result = --x;
+console.log(result, x);</code></pre>
+        
+        <table width="100%">
+            <caption style="text-align: left">비교 연산자</caption>
+            <colgroup>
+                <col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th style="text-align: center">비교연산자</th>
+                    <th style="text-align: center">사례</th>
+                    <th style="text-align: center">설명</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: center"><mark>==</mark></td>
+                    <td style="text-align: center">x == y</td>
+                    <td>x와 y의 값이 같음</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center"><mark>===</mark></td>
+                    <td style="text-align: center">x === y</td>
+                    <td>x와 y의 값이 같고, 타입도 같음</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center"><mark>!=</mark></td>
+                    <td style="text-align: center">x == y</td>
+                    <td>x와 y값이 다름</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center"><mark>!==</mark></td>
+                    <td style="text-align: center">x !== y</td>
+                    <td>x와 y의 값이나 타입이 다름</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center"><mark>></mark></td>
+                    <td style="text-align: center">x > y</td>
+                    <td>x가 y보다 큰지</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center"><mark>></mark></td>
+                    <td style="text-align: center">x < y </td>
+                    <td>x가 y보다 작은지</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center"><mark>></mark></td>
+                    <td style="text-align: center">x >= y </td>
+                    <td>x가 y보다 크거나 같은지</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center"><mark>></mark></td>
+                    <td style="text-align: center">x <= y </td>
+                    <td>x가 y보다 작거나 같은지</td>
+                </tr>
+            </tbody>
+        </table>
+        <pre><code class="language-javascript">var x = 5, y = '5';
+console.log(x == x);
+console.log(x === x);
+console.log(NaN == NaN);</code></pre>
+        <table width="100%">
+            <caption style="text-align: left">논리 연산자</caption>
+            <colgroup>
+                <col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th style="text-align: center">논리연산자</th>
+                    <th style="text-align: center"></th>
+                    <th style="text-align: center">의미</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: center"><mark>||</mark></td>
+                    <td style="text-align: center">a || b</td>
+                    <td>논리합(or) - a 나 b가 참일 경우 참</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center"><mark>&&</mark></td>
+                    <td style="text-align: center">a && b</td>
+                    <td>논리합(and) - a 그리고 b가 참일 경우 참</td>
+                </tr>
+            </tbody>
+        </table>
+        <strong>*드모르간 법칙</strong>
+        
+        <pre><code class="language-javascript">!!(x || y) === (!x && !y)
+!!(x && y) === (!x || !y)</code></pre>
+        <br><small><mark>!</mark> 부정의 의미, <mark>!!</mark>2개를 사용할 경우 강제로 <u>boolean</u>형태로 변환 후 리턴.</small>
+        <pre><code class="language-javascript">!!'hello' // true
+!!undefined // false</code></pre>
+        <table>
+            <caption style="text-align: left">단축 평가 표현식</caption>
+            <colgroup>
+                <col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th style="text-align: center">표현식</th>
+                    <th style="text-align: center">결과</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: center"><mark>true || anything</mark></td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center"><mark>false || anything</mark></td>
+                    <td>anything</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center"><mark>true && anything</mark></td>
+                    <td>anything</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center"><mark>false && anything</mark></td>
+                    <td>false</td>
+                </tr>
+            </tbody>
+        </table>
+        <pre><code class="language-javascript">'Cat' || 'Dog' // 'Cat'
+false || 'Dog' // 'Dog'
+'Cat' || false // 'Cat'
+
+'Cat' && 'Dog' // 'Dog'
+false && 'Dog' // false
+'Cat' && false // false
+
+var done = true;
+var msg = done && "합격";</code></pre>
+
+        <h5>삼항연산자</h5>
+        <p>조건식 <mark>?</mark> <u>ture</u>일 경우 반환 값 <mark>:</mark> <u>false</u> 일때 반환 값</p>
+        <pre><code class="language-javascript">var age = 39;
+var result = age >= 35 ? '으른' : '청년'; // 으른
+</code></pre>
     </section>
 
     <section>
@@ -190,6 +349,8 @@ console.log( score ); // 9</code></pre>
         <li><a href="./1.html">변수</a></li>
         <li><a href="./3.html">데이터 타입</a></li>
         <li><a href="./2.html">변수 #2</a></li>
+        <li><a href="./5.html">조건문 & 반복문</a></li>
+        <li><a href="./4.html">객체</a></li>
     </ul>
 </details>
 <details open>

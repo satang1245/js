@@ -22,39 +22,234 @@
 </header>
 <main>
     <section>
-        <h2></h2>
-        <p></p>
-
-        <articl>
-            <h3>객체지향 프로그램밍이란 <br><small>(OOP: Object-oriented Programming)</small></h3>
-            <div class="detail open">
-                <p>필요한 데이터를 추상화시켜 상태와 행위를 가진 객체를 만들고 객체들간의 유기적인 상호작용을 통해 로직을 구성하는 프로그래밍 방법.
-                    <br>우리가 주변의 사물을 인지하는 방식을 프로그래밍에 접목하려는 사상.
-                    <br>함수들의 집합 혹은 단순한 컴퓨터 명령어들의 목록이라는 절차지향 프로그래밍과 다른, <br><b>관계성 있는 객체들의 집합</b>의 관점으로 접근하는 소프트웨어 디자인.
-                    <br>보다 유연하고 유지보수하기 쉬우며 확장성 측면에서 유리한 프로그래밍을 하도록 의도되었고,<br>주로 대규모 소프트웨어 개발에 널리 사용.
-                </p>
-                <strong>특징</strong>
-                <ul>
-                    <li>캡슐화</li>
-                    <li>추상화</li>
-                    <li>상속화</li>
-                    <li>다형성</li>
-                </ul>
-                <strong>장점</strong>
-                <ul>
-                    <li>1. 코드 재사용성 용이</li>
-                    <li>2. 유지보수의 우수성</li>
-                    <li>3. 모듈에 분업 작업에 따른 업무 분담의 용이성</li>
-                </ul>
-                <strong>단점</strong>
-                <ul>
-                    <li>1. 작업 난이도 상승(객체 처리에 대한 정확한 이해 필요)</li>
-                    <li>2. 프로그램의 용량의 증가</li>
-                    <li>3. 많은 시간 소요(클레스 및 객체 설계, 상속 등 구조적인 설계단계부터 많은 시간 소요)</li>
-                </ul>
-                <!-- <pre><code class="language-javascript"></code></pre> -->
-        </article>
+        <h3>객체지향 프로그램밍이란 <br><small>(OOP: Object-oriented Programming)</small></h3>
+        <div class="detail open">
+            <p>필요한 데이터를 추상화시켜 상태와 행위를 가진 객체를 만들고 객체들간의 유기적인 상호작용을 통해 로직을 구성하는 프로그래밍 방법.
+                <br>우리가 주변의 사물을 인지하는 방식을 프로그래밍에 접목하려는 사상.
+                <br>함수들의 집합 혹은 단순한 컴퓨터 명령어들의 목록이라는 절차지향 프로그래밍과 다른, <br><b>관계성 있는 객체들의 집합</b>의 관점으로 접근하는 소프트웨어 디자인.
+                <br>보다 유연하고 유지보수하기 쉬우며 확장성 측면에서 유리한 프로그래밍을 하도록 의도되었고,<br>주로 대규모 소프트웨어 개발에 널리 사용.
+            </p>
+            
+            <strong>특징</strong>
+            <ul>
+                <li>캡슐화</li>
+                <li>추상화</li>
+                <li>상속화</li>
+                <li>다형성</li>
+            </ul>
+            <strong>장점</strong>
+            <ul>
+                <li>코드 재사용성 용이</li>
+                <li>유지보수의 우수성</li>
+                <li>모듈에 분업 작업에 따른 업무 분담의 용이성</li>
+            </ul>
+            <strong>단점</strong>
+            <ul>
+                <li>작업 난이도 상승(객체 처리에 대한 정확한 이해 필요)</li>
+                <li>프로그램의 용량의 증가</li>
+                <li>많은 시간 소요(클레스 및 객체 설계, 상속 등 구조적인 설계단계부터 많은 시간 소요)</li>
+            </ul>
+        </div>
+        <!-- <pre><code class="language-javascript"></code></pre> -->
     </section>
+
+    <section>
+        <h3>객체란?</h3>
+        <ul>
+            <li>원시타입을 제외한 모든 값(함수, 배열, 정규표현식 등)</li>
+            <li>키(Key)와 값(Value)으로 구성된 <mark>프로퍼티(Property)들의 집합</mark>. 키는 다른 말로 속성이라고도 애기함.</li>
+            <li>자바스크립트의 객체는 객체지향 상속을 구현하기 위해 "프로토타입(prototype)"이라고 불리는 객체의 프로퍼티와 메소드를 상속받을 수 있다.
+                <br>이 프로토타입은 타 언어와 구별되는 중요한 개념이다.
+            </li>
+        </ul>
+
+        <strong>1.1 프로퍼티</strong>
+        <ul>
+            <li>키 : <u>빈 문자열</u>을 포함한 <strong>모든 문자열</strong> 또는 <strong>symbol 값</strong></li>
+            <li>값 : 함수를 포함한 <strong>모든 값</strong></li>
+        </ul>
+        <p><small>*프로퍼티 키에 문자열이나 symbol 값 이외의 값을 지정하면 암묵적으로 타입이 변환되어 문자열이 된다. 
+            <br>이미 존재하는 프로퍼티 키를 중복 선언하면 나중에 선언한 프로퍼티가 먼저 선언한 프로퍼티를 덮어쓴다. 
+            <br>배열과는 달리 객체는 프로퍼티를 열거할 때 순서를 보장하지 않는다.</small></p>
+            <br>
+        <strong>1.2 메소드</strong>
+        <p>프로퍼티 값이 함수일 경우, 일반 함수와 구분짓기 위해 메소드라 부른다.</p>
+    </section>
+
+    <section>
+        <h3>객체 생성방법</h3>
+        <details>
+            <summary><kbd>객체생성 방법</kbd></summary>
+            <div class="details">
+                <pre><code class="language-javascript">// 1. 객체 리터럴
+var person1 = {};
+person1.name = 'Lee';
+person1.gender = 'male';
+
+var person2 = {
+  name: 'Lee',
+  gender: 'male',
+  sayHello: function () {
+    console.log('Hi! My name is ' + this.name);
+  }
+};
+
+//new 연산자
+var person1 = new Object(); 
+person1.sayHello = function () {
+    console.log('Hi! My name is ' + this.name);
+};
+
+
+// 생성자 함수
+function Person(name, gender) {
+    this.name = name;
+    this.gender = gender;
+    this.hello = function() {
+        console.log('Hi! My name is ' + this.name);
+    };
+}
+
+// 인스턴스(instance) 생성
+var person1 = new Person('Lee', 'male');
+var person2 = new Person('Kim', 'female');
+</code></pre>
+                <div style="margin-top: 20px"><small>
+                    <a href="http://wiki.hash.kr/index.php/%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4" target="_blank">*인스턴스란?</a><br>
+                    <br>예시) 붕어빵제작 틀 = <mark>클래스</mark>, 붕어빵 재료들 = <mark>객체</mark>, 붕어빵 완성품 = <mark>인스턴스</mark>
+                    <br>소스예시) <br>
+                    <pre><code class="language-javascript">const myCar1 = new Car({
+    name:'제네시스 GV70', 
+    engine: '3.5', 
+    color: 'blue'
+});
+const myCar2 = new Car({
+    name:'기아 K7', 
+    engine: '3.2', 
+    color: 'black'
+});</code>
+                </small></div>
+            </div>
+        </details>
+
+        <hr>
+        <h3>객체 접근방법</h3>
+        <p>프로퍼티 키는 심볼이 아닌경우 문자열로 변환된다.</p>
+        <details>
+            <summary><kbd>객체접근 방법</kbd></summary>
+            <div class="details">
+                <pre><code class="language-javascript">var myObj = {},
+str = "myString",
+rand = Math.random(),
+obj = new Object();
+
+myObj.type = "마침표 구문";
+myObj["date created"] = "공백을 포함한 문자열";
+myObj[str] = "문자열 값";
+myObj[rand] = "무작위 수";
+myObj[obj] = "객체";
+myObj[""] = "빈 문자열까지";
+
+console.log(myObj);
+
+// 프로퍼티 키 출력하는 방법.
+for (let key in myObj) {
+    console.log( key );
+}
+
+var person = {
+    'first-name' : '길동',
+    'last-name' : '홍',
+    gender: '남자',
+    1: 10,
+    function: 2,
+    hello: function() {
+        console.log('Hello ~~!');
+    }
+}
+
+person.first-name // ???
+person['first-name'], person["last-name"]
+person[gender]   // ???
+person[1] or person.1   // ???
+person.name // ??
+person.age = 10;
+
+delete person;
+delete person.age;
+
+var firstName = '수아';
+person.firstName // ???
+
+// 예약어는 프로퍼티키로 사용하여도 에러가 발생하지 않지만, 예상치 못한 에러를 발생시킬 수 있음으로 사용해선 안된다.
+</code></pre>
+            </div>
+        </details>
+        <details>
+            <summary><kbd>예약어 목록</kbd></summary>
+            <div class="details">
+                <pre><code class="language-javascript">abstract  arguments boolean break byte
+case  catch char  class*  const
+continue  debugger  default delete  do
+double  else  enum* eval  export*
+extends*  false final finally float
+for function  goto  if  implements
+import* in  instanceof  int interface
+let long  native  new null
+package private protected public  return
+short static  super*  switch  synchronized
+this  throw throws  transient true
+try typeof  var void  volatile
+while with  yield
+// *는 ES6에서 추가된 예약어</code></pre>
+            </div>
+        </details>
+
+        <section>
+            <h3>객체에서 알아둬야 할 특징</h3>
+            <p><strong>참조타입 (Pass-by-reference)</strong>
+                <br>객체의 모든 연산이 실제값이 아닌 참조값으로 처리됨을 의미한다. 원시 타입은 값이 한번 정해지면 변경할 수 없지만, 객체는 프로퍼티를 변경, 추가, 삭제가 가능하므로 변경가능 한 값이라 할 수 있다.
+            </p>
+            <details>
+                <summary><kbd>예시보기</kbd></summary>
+                <div class="details">
+                    <pre><code class="language-javascript">// pass-by-reference
+var foo = {
+    text: '안녕'
+}
+var bar = foo;
+console.log( bar === foo, bar , foo );
+
+bar.text = 'Hello';
+console.log( bar , foo );
+
+// 별개의 객체를 생성.
+var foo = { text: '안녕' }
+var bar = { text: '안녕' }
+console.log( bar === foo, bar , foo );
+
+bar.text = 'Hello';
+console.log( bar , foo );
+
+var foo = bar = { text: '안녕' }
+console.log( bar === foo, bar , foo );
+
+// pass-by-value - 원시타입의 경우 값은 복사 전달된다.
+var foo = '안녕';
+var bar = foo;
+
+console.log( foo === bar, foo, bar );
+bar = 'Hello';
+console.log( foo === bar, foo, bar );</code></pre>
+                    </small></div>
+                </div>
+            </details>
+            <p><small><a href="https://poiemaweb.com/js-immutability" target="_blank">*변경 가능한 값(mutable value)과 변경 불가능한 값(immutable value)의 차이점 자세히 보기</a></small></p>
+        </section>
+
+        <p><a href="https://poiemaweb.com/js-object#2-%EA%B0%9D%EC%B2%B4-%EC%83%9D%EC%84%B1-%EB%B0%A9%EB%B2%95" target="_blank">모던자바스크립트 Deep Dive</a></p>
+        <p><a href="https://ko.javascript.info/object" target="_blank">Javascript.info</a></p>
+        <p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Working_with_objects" target="_blank">mdn web docs</a></p>
 </main>
 
 <details open>
@@ -64,6 +259,8 @@
         <li><a href="./1.html">변수</a></li>
         <li><a href="./3.html">데이터 타입</a></li>
         <li><a href="./2.html">변수 #2</a></li>
+        <li><a href="./5.html">조건문 & 반복문</a></li>
+        <li><a href="./4.html">객체</a></li>
     </ul>
 </details>
 <details open>
@@ -83,15 +280,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/javascript.min.js"></script>
 <script>hljs.highlightAll({language: 'javascript'});</script>
-<script>
-const $toggleBtns = document.querySelectorAll('.btn-toggle');
-Array.from($toggleBtns).forEach($toggleBtn=> {
-    $toggleBtn.addEventListener('click', function() {
-        const $content = this.parentNode.nextElementSibling;
-        $content.classList.toggle('open');
-        return false;
-    }, false);
-});
-</script>
 </body>
 </html>

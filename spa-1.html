@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1. SPA 등장배경</title>
+<link rel="stylesheet" href="./css/simple.min.css">
+</head>
+<body>
+<header>
+    <nav>
+        <a href="./">Home</a>
+        <a href="#page-index">목록</a>
+    </nav>
+    <h1>SPA</h1>
+    <p>Single Page Application</p>
+</header>
+<main>
+    <section>
+        <h2>SPA</h2>
+        <p>최조 접근시 아무행동이 일어나지 않고, <u>동적으로 서버에 데이터를 요청</u>하여 <br>화면에 <strong>가상의 DOM을 생성</strong>하여 화면을 랜더링 함.</p>
+        <strong>[장점]</strong>
+        <ul>
+            <li>고성능의 애플리케이션을 제공</li>
+            <li>네이티브 애플리케이션에 대해서 API를 통한 느슨한 결합의 시스템을 구성해 대응이 가능</li>
+            <li>JSON API를 통해 느슨한 결합의 설계 가능</li>
+        </ul>
+
+        <strong>[단점]</strong>
+        <ul>
+            <li>초기 렌더링이 발생하며, 이에 대한 대책이 없으면 다소 시간이 오래 걸릴 수 있다</li>
+            <li>학습 비용이 높다</li>
+            <li>애플리케이션 제작시 프론트엔드의 비중이 높아진다</li>
+        </ul>
+
+        <strong>[특징]</strong>
+        <ul>
+            <li>URL 경로와 뷰의 라우팅 관리</li>
+            <li>브라우저 이력 관리를 통한 페이지 이동</li>
+            <li>비동기를 통한 데이터 얻기</li>
+            <li>뷰 렌더링</li>
+            <li>모듈화된 코드 관리</li>
+        </ul>
+        <small>*React는 View에 특화된 라이브러리 이며, React Router와 결합하여 SPA를 구성한다.</small>
+    </section>
+</main>
+
+<details>
+    <summary id="page-index">목차</summary>
+    <ul>
+        <li><a href="./spa-1.html">HOME</a></li>
+    </ul>
+</details>
+
+<footer>
+    <p>The Javascript course was created by <a href="https://satang1245.github.io/js/" target="_blank">satang1245</a>, an MIT licensee.</p>
+    <p><small>&copy; 2023 satang1245</small></p>
+</footer>
+
+</body>
+</html>

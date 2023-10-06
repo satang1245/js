@@ -68,6 +68,7 @@ console.log(nInf);  // -Infinity
 
 var nan = 1 * 'string'; // 산술 연산 불가
 console.log(nan);       // NaN</code></pre>
+                <p><small>*</small>연산기호 (<mark>+</mark>,<mark>-</mark>,<mark>*</mark>,<mark>/</mark>,<mark>%</mark>)</p>
             </div>
         </article>
 
@@ -222,6 +223,8 @@ var pageLoadTime = /* 웹 페이지 로드하는데 걸린 시간 */
         <li><a href="./1.html">변수</a></li>
         <li><a href="./3.html">데이터 타입</a></li>
         <li><a href="./2.html">변수 #2</a></li>
+        <li><a href="./5.html">조건문 & 반복문</a></li>
+        <li><a href="./4.html">객체</a></li>
     </ul>
 </details>
 <details open>
@@ -247,8 +250,8 @@ Array.from($toggleBtns).forEach($toggleBtn=> {
     $toggleBtn.addEventListener('click', function() {
         const $content = this.parentNode.nextElementSibling;
         $content.classList.toggle('open');
-        return false;
-    }, false);
+        event.preventDefault();
+    });
 });
 </script>
 </body>
