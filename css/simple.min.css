@@ -5,3 +5,5 @@ h3 { margin-top: 0.75rem; }
 pre {font-size: 1rem;}
 .detail:not(.open) { display: none; }
 a:hover { opacity: .75; }
+td pre {margin: 0;padding-left: 1rem;padding-right: 1rem;text-align: initial;}
+table.tac th,table.tac td {text-align: center;}

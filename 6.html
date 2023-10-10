@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>함수 - Function</title>
+<link rel="stylesheet" href="./css/simple.min.css">
+<!-- jQuery cdn -->
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+    <nav>
+        <a href="./">Home</a>
+        <a href="#page-index">목록</a>
+    </nav>
+    <h1>함수</h1>
+    <p></p>
+</header>
+<main>
+    <section>
+        <h2>함수</h2>
+        <p>일련의 과정을 문으로 구현하고 코드 블록으로 감싸서 하나의 실행 단위로 정의한 것</p>
+        <pre><code class="language-javascript">// 함수정의
+function 함수명(매개변수, 매개변수) {
+    return 반환값;
+}
+
+// 함수호출
+함수명(인수, 인수);
+        </code></pre>
+        <details>
+            <summary>함수는 왜 사용하는가?</summary>
+            <p><small>1. 코드의 재사용.<br>2.유지보수의 편의성<br>3.코드의 신뢰성<br>4.코드의 가독성</small></p>
+        </details>
+        <table width="100%" class="JqT3SQfawRcv">
+            <thead>
+                <tr>
+                    <th>함수 정의 방식</th>
+                    <th>예시</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>함수 선언문</th>
+                    <td><pre><code class="language-javascript">function add(x,y) {
+  return x+y;
+}</code></pre></td>
+                </tr>
+                <tr>
+                    <th>함수 표현식</th>
+                    <td><pre><code class="language-javascript">var add = function (x,y) {
+  return x+y;
+}</code></pre></td>
+                </tr>
+                <tr>
+                    <th>생성자 함수</th>
+                    <td><pre><code class="language-javascript">var add = new function('x','y', 'return x + y');</code></pre></td>
+                </tr>
+                <tr>
+                    <th>화살표 함수(ES6)</th>
+                    <td><pre><code class="language-javascript">var add = (x,y) => x + y;</code></pre></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<details open>
+    <summary id="page-index">목차</summary>
+    <ul>
+        <li><a href="./index.html">HOME</a></li>
+        <li><a href="./1.html">변수</a></li>
+        <li><a href="./3.html">데이터 타입</a></li>
+        <li><a href="./2.html">변수 #2</a></li>
+        <li><a href="./5.html">조건문 & 반복문</a></li>
+        <li><a href="./4.html">객체</a></li>
+        <li><a href="./6.html">함수</a></li>
+    </ul>
+</details>
+<details open>
+    <summary>참조</summary>
+    <ul>
+        <li><a href="https://ko.javascript.info/function-basics" target="_blank">JAVSCRIPT.INFO</a></li>
+        <li><a href="https://poiemaweb.com/js-function" target="_blank">모던 자바스크립트 Deep Dive</a></li>
+    </ul>
+</details>
+
+<footer>
+    <p>The Javascript course was created by <a href="https://satang1245.github.io/js/" target="_blank">satang1245</a>, an MIT licensee.</p>
+    <p><small>&copy; 2023 satang1245</small></p>
+</footer>
+
+<!-- [CDN] Code Highlights -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/javascript.min.js"></script>
+<script>hljs.highlightAll({language: 'javascript'});</script>
+</body>
+</html>
