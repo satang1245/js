@@ -25,6 +25,7 @@
         <h2>함수</h2>
         <p>일련의 과정을 문으로 구현하고 코드 블록으로 감싸서 하나의 실행 단위로 정의한 것</p>
         <pre><code class="language-javascript">// 함수정의
+// 매개변수 or 인자. paramater, 인수 : argument 
 function 함수명(매개변수, 매개변수) {
     return 반환값;
 }
@@ -46,27 +47,148 @@ function 함수명(매개변수, 매개변수) {
             <tbody>
                 <tr>
                     <th>함수 선언문</th>
-                    <td><pre><code class="language-javascript">function add(x,y) {
+                    <td><pre><code class="language-javascript">function sum(x,y) {
   return x+y;
 }</code></pre></td>
                 </tr>
                 <tr>
                     <th>함수 표현식</th>
-                    <td><pre><code class="language-javascript">var add = function (x,y) {
+                    <td><pre><code class="language-javascript">var sum = function (x,y) {
   return x+y;
 }</code></pre></td>
                 </tr>
                 <tr>
                     <th>생성자 함수</th>
-                    <td><pre><code class="language-javascript">var add = new function('x','y', 'return x + y');</code></pre></td>
+                    <td><pre><code class="language-javascript">var sum = new function('x','y', 'return x + y');</code></pre></td>
                 </tr>
                 <tr>
                     <th>화살표 함수(ES6)</th>
-                    <td><pre><code class="language-javascript">var add = (x,y) => x + y;</code></pre></td>
+                    <td><pre><code class="language-javascript">var sum = (x,y) => {
+    return x + y;
+}
+// 축약 - return 값이 한 줄일 경우 중괄호{} 생략가능.
+var add = (x,y) => x + y;
+
+// 축약 - 인수가 하나일 경우 괄호() 생략가능.
+var add = x => x + 1;
+</code></pre></td>
                 </tr>
             </tbody>
         </table>
     </section>
+
+    <section>
+        <p><small>*피연산자를 이용하여 함수 선언시 함수 표현식으로 해석된다.</small></p>
+        <pre><code class="language-javascript">//피연사자
+( function bar() {
+    console.log('bar');
+} );
+bar();
+
+var foo = (function () { 
+    console.log('foo');
+} );</code></pre>
+        <p><small>*매개변수</small></p>
+        <pre><code class="language-javascript">// 매개변수 또한 지정하지 않는다면 undefined
+function sum(x, y) {
+    console.log('x ==> : ', x);
+    console.log('y ==> : ', y);
+}
+sum();
+
+sum(1);
+
+// 파라메터 명칭과 동일한 변수 지정할 경우.
+function sum(x,y) {
+    // var x = x; ?
+    // let x = x; ?
+    console.log( 'x ->', x ); 
+}
+
+
+function checkAdult(age) {
+    let result = '청년';
+    if ( age > 19 ) {
+        result = '어른';
+    }
+    return result;
+}
+
+function adultGame(age, checkAge) {
+    if ( !checkAge ) {
+        checkAge = 19;
+    }
+    if ( age < checkAge ) {
+        console.log('넌 어른이 아니야!');
+        return;
+    }
+    console.log('난 어른이지롱!! 😬');  
+}
+        </code></pre>
+        <p><small>*return을 통한 값 반환</small></p>
+        <pre><code class="language-javascript">// 반환
+function sum(x,y) {
+    return x + y;
+}
+
+function getName() {
+    return 'Hello!~ My name is 
+        최인한';
+}
+
+function getName(firstName, lastName) {
+    return 'Hello!~ My name is ' 
+        + lastName 
+        + firstName;
+}
+
+function getName(firstName, lastName) {
+    return (`
+        Hello!~ 
+        My name is ${lastName} ${firstName}
+    `)
+}
+
+// arguments 객체.
+function sum() {
+    console.log( arguments );
+}
+
+function sum() {
+    let total = 0;
+    for (let i=0; i&lt;arguments.length; i++) {
+        total += arguments[i];
+    }
+    return total;
+}
+
+function sum(a) {
+    arguments[0] = 100;
+    return a;
+}
+
+<!-- function sum(a) {
+    arguments[1] = 100;
+    
+    let total = 0;
+    for (let i=0; i<arguments.length; i++) {
+        total += arguments[i];
+    }
+    return total;
+} -->
+</code></pre>
+    </section>
+    <h4>TIP!!</h4>
+    <ul>
+        <li>제작시 모듈별 또는 한 작업에 집중하도록 제작</li>
+        <li>함수명 지정시 변수명과 마찬가지로 명칭만 봐도 어떤 의도로 만든 함수인지 알수 있도록 하는게 제작
+            <ul>
+                <li>showModal() - 모달열기</li>
+                <li>getUserName() - User 이름얻기</li>
+                <li>createGoodsData() - 제품 데이터 생성</li>
+            </ul>
+        </li>
+    </ul>
 </main>
 
 <details open>
@@ -86,6 +208,7 @@ function 함수명(매개변수, 매개변수) {
     <ul>
         <li><a href="https://ko.javascript.info/function-basics" target="_blank">JAVSCRIPT.INFO</a></li>
         <li><a href="https://poiemaweb.com/js-function" target="_blank">모던 자바스크립트 Deep Dive</a></li>
+        <li><a href="https://playcode.io/" target="_blank">Playground</a></li>
     </ul>
 </details>
 
