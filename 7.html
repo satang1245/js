@@ -36,6 +36,7 @@ function hello() {
     getName();
 }
 
+-- 
 var name = '나나';
 
 function hello() {
@@ -58,11 +59,12 @@ console.log(3, fruits);</code></pre>
         <p>
             Java에서 사용되는 this는 자신을 가르키는 참조 변수이다. 
             <br>하지만 Javascript에서 사용되는 <code>this</code>는 함수 호출 방식에 의해 바인딩 될 객체가 결정된다.
-            <br><small>*자바스크립트에서 사용되는 값의 경우 엄격모드와 비엄격모드에서도 차이가 있습니다. <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Strict_mode" target="_blank">참조</a></small>
+            <br><small>*자바스크립트에서 사용되는 값의 경우 엄격모드와 비엄격모드에서도 차이가 있습니다. <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Strict_mode" target="_blank">MDN - strict mode참조</a></small>
         </p>
         <p><b>[관련링크]</b>
             <br>1. <a href="https://poiemaweb.com/js-this" target="_blank">모던자바스크립트 Deep Dive - this</a>
-            <br>2. <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/this" target="_blank">this</a>
+            <br>2. <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/this" target="_blank">MDN - this</a>
+            <br>2. <a href="https://wormwlrm.github.io/2019/03/04/You-should-know-JavaScript-this.html.html" target="_blank">재그지그블로그 - this</a>
             <br>3. <a href="https://readme.tistory.com/35" target="_blank">API와 브라우저의 객체구조(wiudow 객체?)</a>
         </p>
         <pre><code class="language-javascript">function hello() {
@@ -84,13 +86,16 @@ const date2 = new Date();
 const user = {
     name : '홍길동',
     getName: function() {
-        console.log( this.name );
-        console.log( 'user : ', this === user );
-        console.log( 'window : ', this === window );
+        console.group();
+            console.log( this.name );
+            console.log( 'user : ', this === user );
+            console.log( 'window : ', this === window );
+            console.log( this );
+        console.groupEnd();
     }
 }
 const user2 = {
-    name: '김하나';
+    name: '김하나',
     getName: user.getName
 }
 const userGetName = user.getName;
@@ -196,6 +201,11 @@ console.dir( obj );
             <code>thisArg</code> : func 호출에 제공되는 this
             <br><code>arg1, arg2, ...</code> : func 호출에 전달할 인자들. 생략가능.
         </small></p>
+        <mark>func.apply( thisArg, [argsArray] )</mark>
+        <p><small>
+            <code>thisArg</code> : func 호출에 제공되는 this
+            <br><code>[argsArray]</code> : func 호출에 전달할 인자 (배열 또는 생략 가능).
+        </small></p>
 
         <code><pre class="language-javascript">function Hello(name) {
   this.name = name;
@@ -222,6 +232,7 @@ user2.setName.call(user3, 'Apple');
 user3.setName = user2.setName.bind(user3);
 
 // apply
+
 const numbers = [5, 6, 2, 3, 7];
 const max = Math.max.apply(null, numbers);
 <!-- console.log( user3 ); -->
