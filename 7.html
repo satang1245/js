@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>this & prototype</title>
+<link rel="stylesheet" href="./css/simple.min.css">
+<!-- jQuery cdn -->
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+    <nav>
+        <a href="./">Home</a>
+        <a href="#page-index">목록</a>
+    </nav>
+    <h1>프로토타입</h1>
+    <p>Prototype</p>
+</header>
+<main>
+    <section>
+        <h5>scope..</h5>
+        <pre><code class="language-javascript">var name = '나나';
+
+function hello() {
+    console.log(1, name );
+
+    function getName() {
+        console.log(2, name);
+        var name = '파인';
+    }
+
+    getName();
+}
+
+var name = '나나';
+
+function hello() {
+    console.log(1, name );
+
+    function getName() {
+        console.log(2, name);
+        var name = '파인';
+        return name;
+    }
+
+    return getName();
+}
+
+const fruits = hello();
+console.log(3, fruits);</code></pre>
+    </section>
+    <section>
+        <h2>this</h2>
+        <p>
+            Java에서 사용되는 this는 자신을 가르키는 참조 변수이다. 
+            <br>하지만 Javascript에서 사용되는 <code>this</code>는 함수 호출 방식에 의해 바인딩 될 객체가 결정된다.
+            <br><small>*자바스크립트에서 사용되는 값의 경우 엄격모드와 비엄격모드에서도 차이가 있습니다. <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Strict_mode" target="_blank">참조</a></small>
+        </p>
+        <p><b>[관련링크]</b>
+            <br>1. <a href="https://poiemaweb.com/js-this" target="_blank">모던자바스크립트 Deep Dive - this</a>
+            <br>2. <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/this" target="_blank">this</a>
+            <br>3. <a href="https://readme.tistory.com/35" target="_blank">API와 브라우저의 객체구조(wiudow 객체?)</a>
+        </p>
+        <pre><code class="language-javascript">function hello() {
+    console.log(this === window) // true
+}
+console.log(this === window)     // true</code></pre>
+        <pre><code class="language-javascript">function Person() {
+    console.log( this );
+    // return this;
+};
+Person();
+const user = Person();
+const user2 = new Person();
+
+const date1 = Date();
+const date2 = new Date();
+---
+
+const user = {
+    name : '홍길동',
+    getName: function() {
+        console.log( this.name );
+        console.log( 'user : ', this === user );
+        console.log( 'window : ', this === window );
+    }
+}
+const user2 = {
+    name: '김하나';
+    getName: user.getName
+}
+const userGetName = user.getName;
+
+---
+
+function Balls(x,y) {
+    this.x = x;
+    this.y = y;
+
+    this.move = function() {
+        this.x += 3;
+        this.y += 3;
+    }
+}
+
+
+function Bolls(x,y) {
+    this.x = x;
+    this.y = y;
+}
+
+Bolls.prototype.move = function() {
+    this.x += 5;
+    this.y += 5;
+}
+
+const ball1 = new Balls(2,2);
+const ball2 = new Balls(2,2);
+
+const bull1 = new Bolls(2,2);
+const bull2 = new Bolls(2,2);
+
+--
+
+function Counter() {
+    let num = 0;
+    const _increase = function() {
+        num += 1;
+    }
+    const _decrease = function() {
+        num += 1;
+    }
+    // const _getNum = function() {
+    //    return num;
+    //}
+    return {
+        increase: _increase, 
+        decrease: _decrease,
+        getNum: num,
+        // getNum: _getNum
+    }
+};
+
+const counter1 = Counter();
+counter1.increase();
+counter1.increase();
+console.log( counter1.getNum ) // num? ??
+
+
+
+</code></pre>
+    </section>
+    <p>* 생성자 함수의 종류</p>
+    <small>String, Number, Boolean, Function, Array, Date, RegExp, Promise</small>
+
+
+    <section>
+        <h2>프로토타입이란?</h2>
+        <p>객체이면서 다른 객체의 원형이 되는 것.</p>
+        <p><a href="https://poiemaweb.com/js-prototype" target="_blank">모던자바스크립트 Deep dive</a></p>
+        <pre><code class="language-javascript">// 객체 prototype
+var obj = { hello: 'hi' };
+console.dir( obj );
+
+// [[Prototype]] ->  자바스크립트 내부 슬롯. (내부 메소드), 
+// 해당 프로퍼티는 직접적으로 접근은 불가능하지만, 
+// __proto__를 통해 간접적으로 접근할 수 있다. --> obj.__proto__
+
+// 프로퍼티의 상세 정보를 알 수 있는방법은 Object객체의 
+// getOwnPropertyDescriptors(객체명) 메소드를 통해서 알 수 있다.
+// ex) Object.getOwnPropertyDescriptors( obj );
+// hello :    <-- 프로퍼티 키
+//  configurable : true <-- 프로퍼티 재정의 가능한지 여부 (삭제 및 수정)
+//  enumerable : true   <-- 프로퍼티 열거가능여부(예를들어 for...in문이나 Object.keys 메소드 등으로 열거 가능한지)
+//  value : "hi"        <-- 프로퍼티 키를 통해 접근 되는 값
+//  writable : true     <-- 프로퍼티 값의 수정이 가능한지 여부 (읽기 모드만 지원하는지 가능 여부)
+        </code></pre>
+        <p>겍체 상속? 클래스?</p>
+        <p>
+            *<small><a href="https://learnjs.vlpt.us/basics/10-prototype-class.html" target="_blank">벨로퍼트와 함께하는 모던 자바스크립트</a></small>
+            <br>*<small><a href="https://kyounghwan01.github.io/blog/JS/JSbasic/prototype/#constructor-prototype" target="_blank">prototype</a></small>
+            <br>*<small><a href="https://noritersand.github.io/javascript/javascript-%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85-prototype/" target="_blank">prototype2</a></small>
+            <br>*<small><a href="https://www.nextree.co.kr/p7323/" target="_blank">prototype3</a></small>
+        </p>
+    </section>
+
+    <section>
+        <h2>call, apply, bind</h2>
+        <p>Function.prototype.call, Function.prototype.apply, Function.prototype.bind</p>
+        <mark>func.call( thisArg [, arg1, arg2, ...])</mark>
+        <p><small>
+            <code>thisArg</code> : func 호출에 제공되는 this
+            <br><code>arg1, arg2, ...</code> : func 호출에 전달할 인자들. 생략가능.
+        </small></p>
+
+        <code><pre class="language-javascript">function Hello(name) {
+  this.name = name;
+}
+
+Hello.prototype.getName = function() {
+    return this.name;
+}
+Hello.prototype.setName = function(name) {
+    return this.name = name;
+}
+const user1 = new Hello('나나');
+const user2 = new Hello('수수');
+const user3 = {
+    name: '파인'
+}
+// user2.getName();
+
+// call
+// user2.getName.call(user1);
+user2.setName.call(user3, 'Apple');
+
+//bind
+user3.setName = user2.setName.bind(user3);
+
+// apply
+const numbers = [5, 6, 2, 3, 7];
+const max = Math.max.apply(null, numbers);
+<!-- console.log( user3 ); -->
+</pre></code>
+
+    </section>
+</main>
+
+
+
+<details open>
+    <summary id="page-index">목차</summary>
+    <ul>
+        <li><a href="./index.html">HOME</a></li>
+        <li><a href="./1.html">변수</a></li>
+        <li><a href="./3.html">데이터 타입</a></li>
+        <li><a href="./2.html">변수 #2</a></li>
+        <li><a href="./5.html">조건문 & 반복문</a></li>
+        <li><a href="./4.html">객체</a></li>
+        <li><a href="./6.html">함수</a></li>
+    </ul>
+</details>
+
+<footer>
+    <p>The Javascript course was created by <a href="https://satang1245.github.io/js/" target="_blank">satang1245</a>, an MIT licensee.</p>
+    <p><small>&copy; 2023 satang1245</small></p>
+</footer>
+
+<!-- [CDN] Code Highlights -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/javascript.min.js"></script>
+<script>hljs.highlightAll({language: 'javascript'});</script>
+</body>
+</html>
